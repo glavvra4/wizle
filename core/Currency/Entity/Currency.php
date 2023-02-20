@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Core\Currency\Entity;
 
+/** Currency data object */
 readonly class Currency implements CurrencyInterface
 {
     public function __construct(

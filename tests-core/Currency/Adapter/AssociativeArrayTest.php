@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace Core\Tests\Currency\Adapter;
 
 use Core\Common\Adapter\InvalidAdapterDataException;
-use Core\Currency\Adapter\AssociativeArrayAdapter;
+use Core\Currency\Adapter\AssociativeArray;
 use Core\Currency\Entity\Currency;
 use PHPUnit\Framework\TestCase;
 
-class AssociativeArrayAdapterTest extends TestCase
+class AssociativeArrayTest extends TestCase
 {
     public function testGetValue()
     {
-        $object = new AssociativeArrayAdapter([
+        $object = new AssociativeArray([
             'code' => 'AED',
             'title' => 'United Arab Emirates Dirham',
             'symbol' => 'AED',
@@ -74,7 +74,7 @@ class AssociativeArrayAdapterTest extends TestCase
     public function testEmptyMandatoryKeyException()
     {
         $this->expectException(InvalidAdapterDataException::class);
-        new AssociativeArrayAdapter([
+        new AssociativeArray([
             'title' => 'United Arab Emirates Dirham',
             'symbol' => 'AED',
             'native' => 'د.إ.‏',
@@ -89,7 +89,7 @@ class AssociativeArrayAdapterTest extends TestCase
     public function testInvalidValueTypeException()
     {
         $this->expectException(InvalidAdapterDataException::class);
-        new AssociativeArrayAdapter([
+        new AssociativeArray([
             'code' => 'AED',
             'title' => 'United Arab Emirates Dirham',
             'symbol' => 'AED',

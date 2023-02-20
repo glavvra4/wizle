@@ -8,7 +8,7 @@ use Core\Common\Adapter\InvalidAdapterDataException;
 use Core\Currency\Entity\Currency;
 use Core\Currency\Entity\CurrencyInterface;
 
-readonly class AssociativeArrayAdapter extends Currency implements CurrencyInterface
+readonly class AssociativeArray extends Currency implements CurrencyInterface
 {
     private const TYPES_MAPPING = [
         'code' => 'string',
