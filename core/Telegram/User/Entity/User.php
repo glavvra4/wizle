@@ -7,7 +7,7 @@ namespace Core\Telegram\User\Entity;
 use Core\Language\Entity\Language;
 
 /** Represents Telegram user or bot */
-readonly class User implements UserInterface
+class User implements UserInterface
 {
     /**
      * @param User\Id $id

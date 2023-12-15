@@ -6,5 +6,5 @@ namespace Core\Common\Entity;
 
 interface ValueObjectInterface
 {
-    public function getValue();
+    public function getValue(): mixed;
 }

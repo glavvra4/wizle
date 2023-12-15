@@ -7,6 +7,6 @@ namespace Core\Telegram\User\Entity\User;
 use Core\Common\Entity\BoolValueObject;
 
 /** True, if this user is a bot */
-final readonly class IsBot extends BoolValueObject
+class IsBot extends BoolValueObject
 {
 }

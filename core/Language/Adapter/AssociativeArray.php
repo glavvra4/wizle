@@ -4,39 +4,50 @@ declare(strict_types=1);
 
 namespace Core\Language\Adapter;
 
-use Core\Common\Adapter\InvalidAdapterDataException;
+use Core\Common\Adapter\BaseAssociativeArray;
 use Core\Language\Entity\Language;
 use Core\Language\Entity\LanguageInterface;
 
-readonly class AssociativeArray extends Language implements LanguageInterface
+class AssociativeArray extends BaseAssociativeArray implements LanguageInterface
 {
-    private const TYPES_MAPPING = [
-        'title' => 'string',
-        'subtag' => 'string'
-    ];
+    protected Language $language;
+
+    protected function getFieldTypes(): array
+    {
+        return [
+            'title' => 'string',
+            'subtag' => 'string'
+        ];
+    }
+
+    protected function getMandatoryFields(): array
+    {
+        return [
+            'title',
+            'subtag'
+        ];
+    }
 
     /**
      * @param array{title: string, subtag: string} $data
      */
     public function __construct(array $data)
     {
-        foreach (self::TYPES_MAPPING as $key => $type) {
-            if (!array_key_exists($key, $data)) {
-                throw new InvalidAdapterDataException(
-                    sprintf("Key \"%s\" is mandatory in \"data\" array", $key)
-                );
-            }
+        $this->validateFields($data);
 
-            if (gettype($data[$key]) !== $type) {
-                throw new InvalidAdapterDataException(
-                    sprintf("The type of \"%s\" value in \"data\" array must be %s, %s given", $key, $type, gettype($data[$key]))
-                );
-            }
-        }
-
-        parent::__construct(
+        $this->language = new Language(
             new Language\Title($data['title']),
             new Language\Subtag($data['subtag'])
         );
+    }
+
+    public function getTitle(): Language\Title
+    {
+        return $this->language->getTitle();
+    }
+
+    public function getSubtag(): Language\Subtag
+    {
+        return $this->language->getSubtag();
     }
 }

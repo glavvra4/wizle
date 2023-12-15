@@ -8,7 +8,7 @@ use Core\Common\Entity\IntValueObject;
 use Core\Currency\Entity\Currency\Exception\InvalidExponentException;
 
 /** Value object for currency exponent separator */
-final readonly class Exponent extends IntValueObject
+class Exponent extends IntValueObject
 {
     /**
      * @param int $value Positive number
@@ -21,7 +21,7 @@ final readonly class Exponent extends IntValueObject
 
         if ($value < 0) {
             throw new InvalidExponentException(
-                sprintf("Currency exponent must be a positive number, %d done", $value),
+                sprintf("Currency exponent must be a positive number, %d given", $value),
                 0,
                 $this
             );

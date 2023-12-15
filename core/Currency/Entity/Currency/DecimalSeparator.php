@@ -8,7 +8,7 @@ use Core\Common\Entity\StringValueObject;
 use Core\Currency\Entity\Currency\Exception\InvalidDecimalSeparatorException;
 
 /** Value object for currency decimal separator */
-final readonly class DecimalSeparator extends StringValueObject
+class DecimalSeparator extends StringValueObject
 {
     /**
      * @param string $value Single character
@@ -21,7 +21,7 @@ final readonly class DecimalSeparator extends StringValueObject
 
         if (mb_strlen($value) !== 1) {
             throw new InvalidDecimalSeparatorException(
-                sprintf("Currency decimal separator must be a single character, \"%s\" done", $value),
+                sprintf("Currency decimal separator must be a single character, \"%s\" given", $value),
                 0,
                 $this
             );

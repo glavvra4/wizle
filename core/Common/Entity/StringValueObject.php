@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Core\Common\Entity;
 
-abstract readonly class StringValueObject extends BaseValueObject implements StringValueObjectInterface
+abstract class StringValueObject extends BaseValueObject implements StringValueObjectInterface
 {
     /**
      * @param string $value
@@ -19,6 +19,6 @@ abstract readonly class StringValueObject extends BaseValueObject implements Str
      */
     public function getValue(): string
     {
-        return $this->value;
+        return parent::getValue();
     }
 }

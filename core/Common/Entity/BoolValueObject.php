@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Core\Common\Entity;
 
-abstract readonly class BoolValueObject extends BaseValueObject implements BoolValueObjectInterface
+use Core\Common\Adapter;
+
+abstract class BoolValueObject extends BaseValueObject implements BoolValueObjectInterface
 {
     /**
      * @param bool $value
@@ -19,6 +21,6 @@ abstract readonly class BoolValueObject extends BaseValueObject implements BoolV
      */
     public function getValue(): bool
     {
-        return $this->value;
+        return parent::getValue();
     }
 }

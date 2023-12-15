@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Core\Language\Entity;
 
 /** Language data object */
-readonly class Language implements LanguageInterface
+class Language implements LanguageInterface
 {
     /**
      * @param Language\Title $title

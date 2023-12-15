@@ -7,6 +7,6 @@ namespace Core\Currency\Entity\Currency;
 use Core\Common\Entity\BoolValueObject;
 
 /** Value object indicating whether the currency string has a space between symbol and value */
-final readonly class SpaceBetween extends BoolValueObject
+class SpaceBetween extends BoolValueObject
 {
 }

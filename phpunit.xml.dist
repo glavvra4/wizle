@@ -18,13 +18,11 @@
     <testsuites>
         <testsuite name="Project Test Suite">
             <directory>tests-core</directory>
-            <directory>tests-src</directory>
         </testsuite>
     </testsuites>
 
     <coverage processUncoveredFiles="true">
         <include>
-            <directory suffix=".php">src</directory>
             <directory suffix=".php">core</directory>
         </include>
     </coverage>

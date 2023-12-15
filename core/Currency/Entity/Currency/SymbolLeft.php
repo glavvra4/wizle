@@ -7,6 +7,6 @@ namespace Core\Currency\Entity\Currency;
 use Core\Common\Entity\BoolValueObject;
 
 /** Value object indicating whether the currency string has a symbol on the left side */
-final readonly class SymbolLeft extends BoolValueObject
+class SymbolLeft extends BoolValueObject
 {
 }

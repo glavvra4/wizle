@@ -10,7 +10,7 @@ use Core\Common\Entity\IntValueObject;
 /**
  * Value object for Color
  */
-readonly class Color extends IntValueObject implements ColorInterface
+class Color extends IntValueObject implements ColorInterface
 {
     /**
      * @param int $value RGB-format color (0x000000 to 0xffffff)

@@ -7,6 +7,6 @@ namespace Core\Currency\Entity\Currency;
 use Core\Common\Entity\StringValueObject;
 
 /** Value object for currency title */
-final readonly class Title extends StringValueObject
+class Title extends StringValueObject
 {
 }

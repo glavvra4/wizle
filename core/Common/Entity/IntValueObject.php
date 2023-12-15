@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Core\Common\Entity;
 
-abstract readonly class IntValueObject extends BaseValueObject implements IntValueObjectInterface
+abstract class IntValueObject extends BaseValueObject implements IntValueObjectInterface
 {
     /**
      * @param int $value
@@ -19,6 +19,6 @@ abstract readonly class IntValueObject extends BaseValueObject implements IntVal
      */
     public function getValue(): int
     {
-        return $this->value;
+        return parent::getValue();
     }
 }

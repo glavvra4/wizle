@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Core\Common\Entity;
 
-abstract readonly class BaseValueObject implements ValueObjectInterface
+use Core\Common\Adapter;
+
+abstract class BaseValueObject implements ValueObjectInterface
 {
     /**
      * @param mixed $value

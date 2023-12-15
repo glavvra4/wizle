@@ -7,6 +7,6 @@ namespace Core\Telegram\User\Entity\User;
 use Core\Common\Entity\StringValueObject;
 
 /** User's or bot's last name */
-final readonly class LastName extends StringValueObject
+class LastName extends StringValueObject
 {
 }

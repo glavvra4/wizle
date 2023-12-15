@@ -7,6 +7,6 @@ namespace Core\Currency\Entity\Currency;
 use Core\Common\Entity\StringValueObject;
 
 /** Value object for currency native symbol */
-final readonly class Native extends StringValueObject
+class Native extends StringValueObject
 {
 }
