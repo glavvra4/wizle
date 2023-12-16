@@ -44,14 +44,30 @@ readonly class AssociativeArray extends Sticker
             new File\Dimension($data['height']),
             new Sticker\IsAnimated($data['is_animated']),
             new Sticker\IsVideo($data['is_video']),
-            new PhotoSizeAssociativeArrayProxy($data['thumbnail']),
-            new Sticker\Emoji($data['emoji']),
-            new StickerSet\Name($data['set_name']),
-            new FileAssociativeArrayProxy($data['premium_animation']),
-            new MaskPositionAssociativeArrayProxy($data['mask_position']),
-            new Sticker\CustomEmojiId($data['custom_emoji_id']),
-            new Sticker\NeedsRepainting($data['needs_repainting']),
-            new File\Size($data['file_size'])
+            isset($data['thumbnail'])
+                ? new PhotoSizeAssociativeArrayProxy($data['thumbnail'])
+                : null,
+            isset($data['emoji'])
+                ? new Sticker\Emoji($data['emoji'])
+                : null,
+            isset($data['set_name'])
+                ? new StickerSet\Name($data['set_name'])
+                : null,
+            isset($data['premium_animation'])
+                ? new FileAssociativeArrayProxy($data['premium_animation'])
+                : null,
+            isset($data['mask_position'])
+                ? new MaskPositionAssociativeArrayProxy($data['mask_position'])
+                : null,
+            isset($data['custom_emoji_id'])
+                ? new Sticker\CustomEmojiId($data['custom_emoji_id'])
+                : null,
+            isset($data['needs_repainting'])
+                ? new Sticker\NeedsRepainting($data['needs_repainting'])
+                : null,
+            isset($data['file_size'])
+                ? new File\Size($data['file_size'])
+                : null
         );
     }
 }
