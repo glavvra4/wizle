@@ -7,6 +7,7 @@ namespace Core\Tests\Telegram\User\Proxy\Usernames;
 use Core\Telegram\User\Entity\User\Username;
 use Core\Telegram\User\Proxy\Usernames\IndexedArray;
 use InvalidArgumentException;
+use LogicException;
 use PHPUnit\Framework\TestCase;
 
 class IndexedArrayTest extends TestCase
@@ -53,7 +54,7 @@ class IndexedArrayTest extends TestCase
     {
         $object = new IndexedArray([]);
 
-        $this->expectError();
+        $this->expectException(LogicException::class);
         $object[0] = new Username('username1');
     }
 
@@ -63,7 +64,7 @@ class IndexedArrayTest extends TestCase
             'username1'
         ]);
 
-        $this->expectError();
+        $this->expectException(LogicException::class);
         unset($object[0]);
     }
 }

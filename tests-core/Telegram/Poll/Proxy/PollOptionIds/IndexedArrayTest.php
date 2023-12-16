@@ -7,6 +7,7 @@ namespace Core\Tests\Telegram\Poll\Proxy\PollOptionIds;
 use Core\Telegram\Poll\Entity\PollOption;
 use Core\Telegram\Poll\Proxy\PollOptionIds\IndexedArray;
 use InvalidArgumentException;
+use LogicException;
 use PHPUnit\Framework\TestCase;
 
 class IndexedArrayTest extends TestCase
@@ -54,7 +55,7 @@ class IndexedArrayTest extends TestCase
     {
         $object = new IndexedArray([]);
 
-        $this->expectError();
+        $this->expectException(LogicException::class);
         $object[0] = 10;
     }
 
@@ -64,7 +65,7 @@ class IndexedArrayTest extends TestCase
             10
         ]);
 
-        $this->expectError();
+        $this->expectException(LogicException::class);
         unset($object[0]);
     }
 }

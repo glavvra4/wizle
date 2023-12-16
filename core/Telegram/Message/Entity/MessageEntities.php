@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Core\Telegram\Message\Entity;
 
-use Error;
 use InvalidArgumentException;
+use LogicException;
 
 class MessageEntities implements MessageEntitiesInterface
 {
@@ -60,7 +60,7 @@ class MessageEntities implements MessageEntitiesInterface
      */
     public function offsetSet(mixed $offset, mixed $value): void
     {
-        throw new Error("Can't set");
+        throw new LogicException("Can't set");
     }
 
     /**
@@ -70,7 +70,7 @@ class MessageEntities implements MessageEntitiesInterface
      */
     public function offsetUnset(mixed $offset): void
     {
-        throw new Error("Can't unset");
+        throw new LogicException("Can't unset");
     }
 
     /**

@@ -7,6 +7,7 @@ namespace Core\Tests\Telegram\Message\Proxy\MessageEntities;
 use Core\Telegram\Message\Entity\MessageEntity;
 use Core\Telegram\Message\Proxy\MessageEntities\IndexedArray;
 use InvalidArgumentException;
+use LogicException;
 use PHPUnit\Framework\TestCase;
 
 class IndexedArrayTest extends TestCase
@@ -75,7 +76,7 @@ class IndexedArrayTest extends TestCase
     {
         $object = new IndexedArray([]);
 
-        $this->expectError();
+        $this->expectException(LogicException::class);
         $object[0] = new MessageEntity(
             new MessageEntity\Type('pre'),
             new MessageEntity\Offset(10),
@@ -97,7 +98,7 @@ class IndexedArrayTest extends TestCase
             ]
         ]);
 
-        $this->expectError();
+        $this->expectException(LogicException::class);
         unset($object[0]);
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Core\Tests\Telegram\Message\Entity;
 
+use LogicException;
 use Core\Telegram\Message\Entity\{MessageEntities, MessageEntity};
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
@@ -69,7 +70,7 @@ class MessageEntitiesTest extends TestCase
     {
         $object = new MessageEntities([]);
 
-        $this->expectError();
+        $this->expectException(LogicException::class);
         $object[0] = new MessageEntity(
             new MessageEntity\Type('pre'),
             new MessageEntity\Offset(10),
@@ -95,7 +96,7 @@ class MessageEntitiesTest extends TestCase
             )
         ]);
 
-        $this->expectError();
+        $this->expectException(LogicException::class);
         unset($object[0]);
     }
 }

@@ -7,6 +7,7 @@ namespace Core\Tests\Telegram\User\Entity;
 use Core\Telegram\User\Entity\User\Username;
 use Core\Telegram\User\Entity\Usernames;
 use InvalidArgumentException;
+use LogicException;
 use PHPUnit\Framework\TestCase;
 
 class UsernamesTest extends TestCase
@@ -54,7 +55,7 @@ class UsernamesTest extends TestCase
     {
         $object = new Usernames([]);
 
-        $this->expectError();
+        $this->expectException(LogicException::class);
         $object[0] = new Username('username1');
     }
 
@@ -64,7 +65,7 @@ class UsernamesTest extends TestCase
             new Username('username1')
         ]);
 
-        $this->expectError();
+        $this->expectException(LogicException::class);
         unset($object[0]);
     }
 }

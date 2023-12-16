@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Core\Tests\Telegram\Poll\Entity;
 
+use LogicException;
 use Core\Telegram\Poll\Entity\{PollOption, PollOptions};
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
@@ -59,7 +60,7 @@ class PollOptionsTest extends TestCase
     {
         $object = new PollOptions([]);
 
-        $this->expectError();
+        $this->expectException(LogicException::class);
         $object[0] = new PollOption(
             new PollOption\Text('text'),
             new PollOption\VoterCount(10)
@@ -75,7 +76,7 @@ class PollOptionsTest extends TestCase
             )
         ]);
 
-        $this->expectError();
+        $this->expectException(LogicException::class);
         unset($object[0]);
     }
 }

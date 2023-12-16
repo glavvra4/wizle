@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Core\Telegram\User\Entity;
 
 use Core\Telegram\User\Entity\User\Username;
-use Error;
 use InvalidArgumentException;
+use LogicException;
 
 class Usernames implements UsernamesInterface
 {
@@ -61,7 +61,7 @@ class Usernames implements UsernamesInterface
      */
     public function offsetSet(mixed $offset, mixed $value): void
     {
-        throw new Error("Can't set");
+        throw new LogicException("Can't set");
     }
 
     /**
@@ -71,7 +71,7 @@ class Usernames implements UsernamesInterface
      */
     public function offsetUnset(mixed $offset): void
     {
-        throw new Error("Can't unset");
+        throw new LogicException("Can't unset");
     }
 
     /**
