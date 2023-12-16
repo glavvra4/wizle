@@ -6,7 +6,7 @@ namespace Core\Telegram\Message\Entity;
 
 use Core\Telegram\User\Entity\User;
 
-readonly class Contact implements MessageEntityInterface
+readonly class Contact implements ContactInterface
 {
     /**
      * @param Contact\PhoneNumber $phoneNumber
