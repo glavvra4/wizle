@@ -6,6 +6,4 @@ namespace Core\Telegram\Poll\Entity;
 
 interface PollOptionInterface
 {
-    public function getText(): PollOption\Text;
-    public function getVoterCount(): PollOption\VoterCount;
 }

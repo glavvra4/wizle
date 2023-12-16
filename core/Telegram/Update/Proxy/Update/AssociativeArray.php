@@ -4,22 +4,15 @@ declare(strict_types=1);
 
 namespace Core\Telegram\Update\Proxy\Update;
 
-use Core\Common\Proxy\BaseAssociativeArray;
 use Core\Telegram\Message\Proxy\Message\AssociativeArray as MessageAssociativeArrayProxy;
-use Core\Telegram\Message\Entity\MessageInterface;
 use Core\Telegram\Update\Entity\Update;
-use Core\Telegram\Update\Entity\UpdateInterface;
+use JetBrains\PhpStorm\ArrayShape;
 
-class AssociativeArray extends BaseAssociativeArray implements UpdateInterface
+readonly class AssociativeArray extends Update
 {
-    protected Update $update;
 
-    /**
-     * @inheritDoc
-     */
-    protected function getFieldTypes(): array
-    {
-        return [
+    public function __construct(
+        #[ArrayShape([
             'update_id' => 'integer',
             'message' => 'array',
             'edited_message' => 'array',
@@ -35,62 +28,23 @@ class AssociativeArray extends BaseAssociativeArray implements UpdateInterface
             'my_chat_member' => 'array',
             'chat_member' => 'array',
             'chat_join_request' => 'array',
-        ];
-    }
-
-    /**
-     * @inheritDoc
-     */
-    protected function getMandatoryFields(): array
+        ])] array $data
+    )
     {
-        return [
-            'update_id'
-        ];
-    }
-
-    public function __construct(array $data)
-    {
-        $this->validateFields($data);
-
-        $this->update = new Update(
+        parent::__construct(
             new Update\Id($data['update_id']),
-            (array_key_exists('message', $data) && $data['message'] !== null)
+            isset($data['message'])
                 ? new MessageAssociativeArrayProxy($data['message'])
                 : null,
-            (array_key_exists('edited_message', $data) && $data['edited_message'] !== null)
+            isset($data['edited_message'])
                 ? new MessageAssociativeArrayProxy($data['edited_message'])
                 : null,
-            (array_key_exists('channel_post', $data) && $data['channel_post'] !== null)
+            isset($data['channel_post'])
                 ? new MessageAssociativeArrayProxy($data['channel_post'])
                 : null,
-            (array_key_exists('edited_channel_post', $data) && $data['edited_channel_post'] !== null)
+            isset($data['edited_channel_post'])
                 ? new MessageAssociativeArrayProxy($data['edited_channel_post'])
                 : null,
         );
-    }
-
-    public function getId(): Update\Id
-    {
-        return $this->update->getId();
-    }
-
-    public function getMessage(): ?MessageInterface
-    {
-        return $this->update->getMessage();
-    }
-
-    public function getEditedMessage(): ?MessageInterface
-    {
-        return $this->update->getEditedMessage();
-    }
-
-    public function getChannelPost(): ?MessageInterface
-    {
-        return $this->update->getChannelPost();
-    }
-
-    public function getEditedChannelPost(): ?MessageInterface
-    {
-        return $this->update->getEditedChannelPost();
     }
 }

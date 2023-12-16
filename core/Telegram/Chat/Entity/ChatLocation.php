@@ -4,34 +4,18 @@ declare(strict_types=1);
 
 namespace Core\Telegram\Chat\Entity;
 
-use Core\Telegram\Location\Entity\LocationInterface;
+use Core\Telegram\Location\Entity\Location;
 
-class ChatLocation implements ChatLocationInterface
+readonly class ChatLocation implements ChatLocationInterface
 {
     /**
-     * @param LocationInterface $location
+     * @param Location $location
      * @param ChatLocation\Address $address
      */
     public function __construct(
-        protected LocationInterface $location,
-        protected ChatLocation\Address $address
+        public Location             $location,
+        public ChatLocation\Address $address
     )
     {
-    }
-
-    /**
-     * @return LocationInterface
-     */
-    public function getLocation(): LocationInterface
-    {
-        return $this->location;
-    }
-
-    /**
-     * @return ChatLocation\Address
-     */
-    public function getAddress(): ChatLocation\Address
-    {
-        return $this->address;
     }
 }

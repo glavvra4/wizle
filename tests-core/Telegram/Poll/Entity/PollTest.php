@@ -4,31 +4,23 @@ declare(strict_types=1);
 
 namespace Core\Tests\Telegram\Poll\Entity;
 
-use Core\Telegram\Message\Entity\MessageEntities;
-use Core\Telegram\Message\Entity\MessageEntity;
-use Core\Telegram\Poll\Entity\Poll;
-use Core\Telegram\Poll\Entity\PollOption;
-use Core\Telegram\Poll\Entity\PollOptions;
-use DateInterval;
-use DateTimeImmutable;
+use Core\Telegram\Message\Entity\{MessageEntities, MessageEntity};
+use Core\Telegram\Poll\Entity\{Poll, PollOption, PollOptions,};
 use PHPUnit\Framework\TestCase;
 
 class PollTest extends TestCase
 {
     public function testGetValues()
     {
-        $pollOptionStub = $this->createStub(PollOption::class);
-        $pollOptionStub->method('getVoterCount')
-            ->willReturn(new PollOption\VoterCount(10));
-
-        $explanationEntityStub = $this->createStub(MessageEntity::class);
-        $explanationEntityStub->method('getType')
-            ->willReturn(new MessageEntity\Type('hashtag'));
-
         $object = new Poll(
             new Poll\Id('id'),
             new Poll\Question('question'),
-            new PollOptions([$pollOptionStub]),
+            new PollOptions([
+                new PollOption(
+                    new PollOption\Text('text1'),
+                    new PollOption\VoterCount(10)
+                ),
+            ]),
             new Poll\TotalVoterCount(11),
             new Poll\IsClosed(true),
             new Poll\IsAnonymous(true),
@@ -36,74 +28,84 @@ class PollTest extends TestCase
             new Poll\AllowsMultipleAnswers(true),
             new PollOption\Id(12),
             new Poll\Explanation('explanation'),
-            new MessageEntities([$explanationEntityStub]),
-            new Poll\OpenPeriod(new DateInterval('PT13S')),
-            new Poll\CloseDate((new DateTimeImmutable())->setTimestamp(1677337596))
+            new MessageEntities([
+                new MessageEntity(
+                    new MessageEntity\Type('pre'),
+                    new MessageEntity\Offset(13),
+                    new MessageEntity\Length(14),
+                    null,
+                    null,
+                    new MessageEntity\Language('php'),
+                    null
+                )
+            ]),
+            new Poll\OpenPeriod(15),
+            new Poll\Close(16)
         );
 
         $this->assertEquals(
             'id',
-            $object->getId()->getValue()
+            $object->id->getValue()
         );
 
         $this->assertEquals(
             'question',
-            $object->getQuestion()->getValue()
+            $object->question->getValue()
         );
 
         $this->assertEquals(
             10,
-            $object->getOptions()[0]->getVoterCount()->getValue()
+            $object->options[0]->voterCount->getValue()
         );
 
         $this->assertEquals(
             11,
-            $object->getTotalVoterCount()->getValue()
+            $object->totalVoterCount->getValue()
         );
 
         $this->assertEquals(
             true,
-            $object->getIsClosed()->getValue()
+            $object->isClosed->getValue()
         );
 
         $this->assertEquals(
             true,
-            $object->getIsAnonymous()->getValue()
+            $object->isAnonymous->getValue()
         );
 
         $this->assertEquals(
             'type',
-            $object->getType()->getValue()
+            $object->type->getValue()
         );
 
         $this->assertEquals(
             true,
-            $object->getAllowsMultipleAnswers()->getValue()
+            $object->allowsMultipleAnswers->getValue()
         );
 
         $this->assertEquals(
             12,
-            $object->getCorrectOptionId()->getValue()
+            $object->correctOptionId->getValue()
         );
 
         $this->assertEquals(
             'explanation',
-            $object->getExplanation()->getValue()
+            $object->explanation->getValue()
         );
 
         $this->assertEquals(
-            'hashtag',
-            $object->getExplanationEntities()[0]->getType()->getValue()
+            'pre',
+            $object->explanationEntities[0]->type->getValue()
         );
 
         $this->assertEquals(
-            13,
-            $object->getOpenPeriod()->getValue()->s
+            15,
+            $object->openPeriod->getValue()
         );
 
         $this->assertEquals(
-            1677337596,
-            $object->getCloseDate()->getValue()->getTimestamp()
+            16,
+            $object->closeDate->getValue()
         );
     }
 }

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Core\Telegram\Chat\Entity\ChatInviteLink;
 
-use Core\Common\Entity\DateTimeImmutableValueObject;
+use Core\Common\Entity\TimeValueObject;
 
-class ExpireDate extends DateTimeImmutableValueObject
+class ExpireDate extends TimeValueObject
 {
 }

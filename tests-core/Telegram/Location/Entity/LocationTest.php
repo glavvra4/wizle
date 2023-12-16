@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Core\Tests\Telegram\Location\Entity;
 
 use Core\Telegram\Location\Entity\Location;
-use DateInterval;
 use PHPUnit\Framework\TestCase;
 
 class LocationTest extends TestCase
@@ -13,42 +12,42 @@ class LocationTest extends TestCase
     public function testGetValues()
     {
         $object = new Location(
-            new Location\Longitude(45.072314),
-            new Location\Latitude(39.039317),
-            new Location\HorizontalAccuracy(10),
-            new Location\LivePeriod(new DateInterval('PT200S')),
-            new Location\Heading(180),
-            new Location\ProximityAlertRadius(100),
-        );
-
-        $this->assertEquals(
-            45.072314,
-            $object->getLongitude()->getValue()
-        );
-
-        $this->assertEquals(
-            39.039317,
-            $object->getLatitude()->getValue()
+            new Location\Longitude(10),
+            new Location\Latitude(11),
+            new Location\HorizontalAccuracy(12),
+            new Location\LivePeriod(13),
+            new Location\Heading(14),
+            new Location\ProximityAlertRadius(15),
         );
 
         $this->assertEquals(
             10,
-            $object->getHorizontalAccuracy()->getValue()
+            $object->longitude->getValue()
         );
 
         $this->assertEquals(
-            200,
-            $object->getLivePeriod()->getValue()->s
+            11,
+            $object->latitude->getValue()
         );
 
         $this->assertEquals(
-            180,
-            $object->getHeading()->getValue()
+            12,
+            $object->horizontalAccuracy->getValue()
         );
 
         $this->assertEquals(
-            100,
-            $object->getProximityAlertRadius()->getValue()
+            13,
+            $object->livePeriod->getValue()
+        );
+
+        $this->assertEquals(
+            14,
+            $object->heading->getValue()
+        );
+
+        $this->assertEquals(
+            15,
+            $object->proximityAlertRadius->getValue()
         );
     }
 }

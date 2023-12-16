@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Core\Tests\Telegram\Message\Proxy\MessageEntities;
 
-use Core\Telegram\Message\Proxy\MessageEntities\IndexedArray;
 use Core\Telegram\Message\Entity\MessageEntity;
-use Core\Telegram\Message\Entity\MessageEntityInterface;
+use Core\Telegram\Message\Proxy\MessageEntities\IndexedArray;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
@@ -44,19 +43,19 @@ class IndexedArrayTest extends TestCase
 
         $this->assertEquals(
             'mention',
-            $object[0]->getType()->getValue()
+            $object[0]->type->getValue()
         );
 
         $this->assertEquals(
             'hashtag',
-            $object[1]->getType()->getValue()
+            $object[1]->type->getValue()
         );
 
         // Testing Iterator
 
         foreach ($object as $key => $item) {
             $this->assertInstanceOf(
-                MessageEntityInterface::class,
+                MessageEntity::class,
                 $item
             );
 
@@ -77,7 +76,15 @@ class IndexedArrayTest extends TestCase
         $object = new IndexedArray([]);
 
         $this->expectError();
-        $object[0] = $this->createStub(MessageEntity::class);
+        $object[0] = new MessageEntity(
+            new MessageEntity\Type('pre'),
+            new MessageEntity\Offset(10),
+            new MessageEntity\Length(11),
+            null,
+            null,
+            new MessageEntity\Language('php'),
+            null
+        );
     }
 
     public function testArrayAccessUnsetError()

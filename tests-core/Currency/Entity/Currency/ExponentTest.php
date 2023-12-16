@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Core\Tests\Currency\Entity\Currency;
 
-use Core\Currency\Entity\Currency\Code;
-use Core\Currency\Entity\Currency\Exception\InvalidCodeException;
 use Core\Currency\Entity\Currency\Exception\InvalidExponentException;
 use Core\Currency\Entity\Currency\Exponent;
 use PHPUnit\Framework\TestCase;

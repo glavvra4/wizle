@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Core\Tests\Telegram\Location\Entity\Location;
 
-use Core\Telegram\Location\Entity\Location\Exception\InvalidProximityAlertRadiusException;
-use Core\Telegram\Location\Entity\Location\ProximityAlertRadius;
+use Core\Telegram\Location\Entity\Location\{Exception\InvalidProximityAlertRadiusException, ProximityAlertRadius};
 use PHPUnit\Framework\TestCase;
 
 class ProximityAlertRadiusTest extends TestCase

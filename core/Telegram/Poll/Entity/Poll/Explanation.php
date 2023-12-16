@@ -6,7 +6,6 @@ namespace Core\Telegram\Poll\Entity\Poll;
 
 use Core\Common\Entity\StringValueObject;
 use Core\Telegram\Poll\Entity\Poll\Exception\InvalidExplanationException;
-use Core\Telegram\Poll\Entity\Poll\Exception\InvalidQuestionException;
 
 class Explanation extends StringValueObject
 {

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Core\Telegram\Location\Entity\Location;
 
-use Core\Common\Entity\DateIntervalValueObject;
+use Core\Common\Entity\TimeIntervalValueObject;
 
-class LivePeriod extends DateIntervalValueObject
+class LivePeriod extends TimeIntervalValueObject
 {
 }

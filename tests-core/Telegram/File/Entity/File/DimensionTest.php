@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Core\Tests\Telegram\File\Entity\File;
 
-use Core\Telegram\File\Entity\File\Dimension;
-use Core\Telegram\File\Entity\File\Exception\InvalidDimensionException;
+use Core\Telegram\File\Entity\File\{Dimension, Exception\InvalidDimensionException};
 use PHPUnit\Framework\TestCase;
 
 class DimensionTest extends TestCase

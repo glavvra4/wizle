@@ -6,19 +6,17 @@ namespace Core\Tests\Telegram\Location\Entity;
 
 use Core\Telegram\Location\Entity\Location;
 use Core\Telegram\Location\Entity\Venue;
-use DateInterval;
 use PHPUnit\Framework\TestCase;
 
 class VenueTest extends TestCase
 {
     public function testGetValues()
     {
-        $locationStub = $this->createStub(Location::class);
-        $locationStub->method('getLongitude')
-            ->willReturn(new Location\Longitude(45.072314));
-
         $object = new Venue(
-            $locationStub,
+            new Location(
+                new Location\Longitude(10),
+                new Location\Latitude(11),
+            ),
             new Venue\Title('test_title'),
             new Venue\Address('test_address'),
             new Venue\FoursquareId('test_foursquare_id'),
@@ -28,38 +26,38 @@ class VenueTest extends TestCase
         );
 
         $this->assertEquals(
-            45.072314,
-            $object->getLocation()->getLongitude()->getValue()
+            10,
+            $object->location->longitude->getValue()
         );
 
         $this->assertEquals(
             'test_title',
-            $object->getTitle()->getValue()
+            $object->title->getValue()
         );
 
         $this->assertEquals(
             'test_address',
-            $object->getAddress()->getValue()
+            $object->address->getValue()
         );
 
         $this->assertEquals(
             'test_foursquare_id',
-            $object->getFoursquareId()->getValue()
+            $object->foursquareId->getValue()
         );
 
         $this->assertEquals(
             'test_foursquare_type',
-            $object->getFoursquareType()->getValue()
+            $object->foursquareType->getValue()
         );
 
         $this->assertEquals(
             'test_google_place_id',
-            $object->getGooglePlaceId()->getValue()
+            $object->googlePlaceId->getValue()
         );
 
         $this->assertEquals(
             'test_google_place_type',
-            $object->getGooglePlaceType()->getValue()
+            $object->googlePlaceType->getValue()
         );
     }
 }

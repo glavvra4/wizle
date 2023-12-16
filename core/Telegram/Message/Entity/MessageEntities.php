@@ -9,21 +9,19 @@ use InvalidArgumentException;
 
 class MessageEntities implements MessageEntitiesInterface
 {
-    private int $position = 0;
+    private int $position;
 
-    /** @var array<MessageEntityInterface>  */
-    private array $container = [];
+    /** @var array<MessageEntity> */
+    private array $container;
 
     /**
-     * @param array<MessageEntityInterface> $entities
-     *
-     * @throws InvalidArgumentException
+     * @param array<MessageEntity> $entities
      */
     public function __construct(array $entities)
     {
         foreach ($entities as $entity) {
-            if (!$entity instanceof MessageEntityInterface) {
-                throw new InvalidArgumentException("Each element of \"entities\" array must be an instance of MessageEntityInterface");
+            if (!$entity instanceof MessageEntity) {
+                throw new InvalidArgumentException("Each element of \"entities\" array must be an instance of MessageEntity");
             }
 
             $this->container[] = $entity;
@@ -35,23 +33,23 @@ class MessageEntities implements MessageEntitiesInterface
     /**
      * @param mixed $offset
      *
-     * @return bool
+     * @return MessageEntity|null
      */
-    public function offsetExists(mixed $offset): bool
+    public function offsetGet(mixed $offset): ?MessageEntity
     {
-        return isset($this->container[$offset]);
+        return ($this->offsetExists($offset))
+            ? $this->container[$offset]
+            : null;
     }
 
     /**
      * @param mixed $offset
      *
-     * @return MessageEntityInterface|null
+     * @return bool
      */
-    public function offsetGet(mixed $offset): ?MessageEntityInterface
+    public function offsetExists(mixed $offset): bool
     {
-        return ($this->offsetExists($offset))
-            ? $this->container[$offset]
-            : null;
+        return isset($this->container[$offset]);
     }
 
     /**
@@ -76,9 +74,9 @@ class MessageEntities implements MessageEntitiesInterface
     }
 
     /**
-     * @return MessageEntityInterface
+     * @return MessageEntity
      */
-    public function current(): MessageEntityInterface
+    public function current(): MessageEntity
     {
         return $this->container[$this->position];
     }

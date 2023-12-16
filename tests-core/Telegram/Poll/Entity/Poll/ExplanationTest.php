@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Core\Tests\Telegram\Poll\Entity\Poll;
 
-use Core\Telegram\Poll\Entity\Poll\Exception\InvalidExplanationException;
-use Core\Telegram\Poll\Entity\Poll\Explanation;
+use Core\Telegram\Poll\Entity\Poll\{Exception\InvalidExplanationException, Explanation};
 use PHPUnit\Framework\TestCase;
 
 class ExplanationTest extends TestCase

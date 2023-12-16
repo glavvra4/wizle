@@ -19,7 +19,7 @@ class Code extends StringValueObject
     {
         parent::__construct($value);
 
-        if (mb_strlen($value) !== 3 OR !ctype_upper($value)) {
+        if (mb_strlen($value) !== 3 or !ctype_upper($value)) {
             throw new InvalidCodeException(
                 sprintf("ISO 4217 currency code must contain three Latin alphas and be uppercase, \"%s\" given", $value),
                 0,

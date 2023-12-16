@@ -9,6 +9,8 @@ use Core\Common\Entity\IntValueObjectInterface;
 interface ColorInterface extends IntValueObjectInterface
 {
     public function getRed(): int;
+
     public function getBlue(): int;
+
     public function getGreen(): int;
 }

@@ -9,21 +9,19 @@ use InvalidArgumentException;
 
 class PollOptions implements PollOptionsInterface
 {
-    private int $position = 0;
+    private int $position;
 
-    /** @var array<PollOptionInterface>  */
-    private array $container = [];
+    /** @var array<PollOption> */
+    private array $container;
 
     /**
-     * @param array<PollOptionInterface> $entities
-     *
-     * @throws InvalidArgumentException
+     * @param array<PollOption> $entities
      */
     public function __construct(array $entities)
     {
         foreach ($entities as $entity) {
-            if (!$entity instanceof PollOptionInterface) {
-                throw new InvalidArgumentException("Each element of \"entities\" array must be an instance of PollOptionInterface");
+            if (!$entity instanceof PollOption) {
+                throw new InvalidArgumentException("Each element of \"entities\" array must be an instance of PollOption");
             }
 
             $this->container[] = $entity;
@@ -35,23 +33,23 @@ class PollOptions implements PollOptionsInterface
     /**
      * @param mixed $offset
      *
-     * @return bool
+     * @return PollOption|null
      */
-    public function offsetExists(mixed $offset): bool
+    public function offsetGet(mixed $offset): ?PollOption
     {
-        return isset($this->container[$offset]);
+        return ($this->offsetExists($offset))
+            ? $this->container[$offset]
+            : null;
     }
 
     /**
      * @param mixed $offset
      *
-     * @return PollOptionInterface|null
+     * @return bool
      */
-    public function offsetGet(mixed $offset): ?PollOptionInterface
+    public function offsetExists(mixed $offset): bool
     {
-        return ($this->offsetExists($offset))
-            ? $this->container[$offset]
-            : null;
+        return isset($this->container[$offset]);
     }
 
     /**
@@ -76,9 +74,9 @@ class PollOptions implements PollOptionsInterface
     }
 
     /**
-     * @return PollOptionInterface
+     * @return PollOption
      */
-    public function current(): PollOptionInterface
+    public function current(): PollOption
     {
         return $this->container[$this->position];
     }

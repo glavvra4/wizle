@@ -10,9 +10,6 @@ use PHPUnit\Framework\TestCase;
 
 class AssociativeArrayTest extends TestCase
 {
-    /**
-     * @throws Exception
-     */
     public function testGetValues()
     {
         $object = new AssociativeArray([
@@ -22,60 +19,59 @@ class AssociativeArrayTest extends TestCase
             'height' => 11,
             'duration' => 12,
             'thumbnail' => [
-                'file_id' => 'thumbnail_stub_file_id',
-                'file_unique_id' => 'thumbnail_stub_file_unique_id',
-                'width' => 10,
-                'height' => 11,
-                'file_size' => 12
+                'file_id' => 'thumbnail_file_id',
+                'file_unique_id' => 'thumbnail_file_unique_id',
+                'width' => 13,
+                'height' => 14,
             ],
             'file_name' => 'file_name',
             'mime_type' => 'mime_type',
-            'file_size' => 13
+            'file_size' => 15
         ]);
 
         $this->assertEquals(
             'file_id',
-            $object->getFileId()->getValue()
+            $object->fileId->getValue()
         );
 
         $this->assertEquals(
             'file_unique_id',
-            $object->getFileUniqueId()->getValue()
+            $object->fileUniqueId->getValue()
         );
 
         $this->assertEquals(
             10,
-            $object->getWidth()->getValue()
+            $object->width->getValue()
         );
 
         $this->assertEquals(
             11,
-            $object->getHeight()->getValue()
+            $object->height->getValue()
         );
 
         $this->assertEquals(
             12,
-            $object->getDuration()->getValue()->s
+            $object->duration->getValue()
         );
 
         $this->assertEquals(
-            'thumbnail_stub_file_id',
-            $object->getThumbnail()->getFileId()->getValue()
+            'thumbnail_file_id',
+            $object->thumbnail->fileId->getValue()
         );
 
         $this->assertEquals(
             'file_name',
-            $object->getFileName()->getValue()
+            $object->fileName->getValue()
         );
 
         $this->assertEquals(
             'mime_type',
-            $object->getMimeType()->getValue()
+            $object->mimeType->getValue()
         );
 
         $this->assertEquals(
-            13,
-            $object->getFileSize()->getValue()
+            15,
+            $object->fileSize->getValue()
         );
     }
 }

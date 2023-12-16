@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Core\Tests\Telegram\Location\Entity\Location;
 
-use Core\Telegram\Location\Entity\Location\Exception\InvalidHeadingException;
-use Core\Telegram\Location\Entity\Location\Heading;
+use Core\Telegram\Location\Entity\Location\{Exception\InvalidHeadingException, Heading};
 use PHPUnit\Framework\TestCase;
 
 class HeadingTest extends TestCase

@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Core\Tests\Telegram\File\Entity\ChatPhoto;
 
-use Core\Telegram\File\Entity\ChatPhoto\SmallFile;
-use Core\Telegram\File\Entity\File;
+use Core\Telegram\File\Entity\{ChatPhoto\SmallFile, File};
 use PHPUnit\Framework\TestCase;
 
 class SmallFileTest extends TestCase
@@ -19,12 +18,12 @@ class SmallFileTest extends TestCase
 
         $this->assertEquals(
             'file_id',
-            $object->getFileId()->getValue()
+            $object->fileId->getValue()
         );
 
         $this->assertEquals(
             'file_unique_id',
-            $object->getFileUniqueId()->getValue()
+            $object->fileUniqueId->getValue()
         );
     }
 }

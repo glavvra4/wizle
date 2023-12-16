@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Core\Tests\Telegram\Poll\Proxy\PollOptionIds;
 
-use Core\Telegram\Poll\Proxy\PollOptionIds\IndexedArray;
 use Core\Telegram\Poll\Entity\PollOption;
+use Core\Telegram\Poll\Proxy\PollOptionIds\IndexedArray;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 

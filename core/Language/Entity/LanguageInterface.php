@@ -6,6 +6,4 @@ namespace Core\Language\Entity;
 
 interface LanguageInterface
 {
-    public function getTitle(): Language\Title;
-    public function getSubtag(): Language\Subtag;
 }

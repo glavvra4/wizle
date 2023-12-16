@@ -4,26 +4,23 @@ declare(strict_types=1);
 
 namespace Core\Telegram\Poll\Entity;
 
-use Core\Telegram\Poll\Entity\PollOption\Id as PollOptionId;
 use Error;
 use InvalidArgumentException;
 
 class PollOptionIds implements PollOptionIdsInterface
 {
-    private int $position = 0;
+    private int $position;
 
-    /** @var array<PollOptionId>  */
-    private array $container = [];
+    /** @var array<PollOption\Id> */
+    private array $container;
 
     /**
-     * @param array<PollOptionId> $entities
-     *
-     * @throws InvalidArgumentException
+     * @param array<PollOption\Id> $entities
      */
     public function __construct(array $entities)
     {
         foreach ($entities as $entity) {
-            if (!$entity instanceof PollOptionId) {
+            if (!$entity instanceof PollOption\Id) {
                 throw new InvalidArgumentException("Each element of \"entities\" array must be an instance of Id");
             }
 
@@ -36,23 +33,23 @@ class PollOptionIds implements PollOptionIdsInterface
     /**
      * @param mixed $offset
      *
-     * @return bool
+     * @return PollOption\Id|null
      */
-    public function offsetExists(mixed $offset): bool
+    public function offsetGet(mixed $offset): ?PollOption\Id
     {
-        return isset($this->container[$offset]);
+        return ($this->offsetExists($offset))
+            ? $this->container[$offset]
+            : null;
     }
 
     /**
      * @param mixed $offset
      *
-     * @return PollOptionId|null
+     * @return bool
      */
-    public function offsetGet(mixed $offset): ?PollOptionId
+    public function offsetExists(mixed $offset): bool
     {
-        return ($this->offsetExists($offset))
-            ? $this->container[$offset]
-            : null;
+        return isset($this->container[$offset]);
     }
 
     /**
@@ -77,9 +74,9 @@ class PollOptionIds implements PollOptionIdsInterface
     }
 
     /**
-     * @return PollOptionId
+     * @return PollOption\Id
      */
-    public function current(): PollOptionId
+    public function current(): PollOption\Id
     {
         return $this->container[$this->position];
     }

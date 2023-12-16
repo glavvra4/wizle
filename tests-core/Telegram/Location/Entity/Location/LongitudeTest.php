@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Core\Tests\Telegram\Location\Entity\Location;
 
-use Core\Telegram\Location\Entity\Location\Exception\InvalidLongitudeException;
-use Core\Telegram\Location\Entity\Location\Longitude;
+use Core\Telegram\Location\Entity\Location\{Exception\InvalidLongitudeException, Longitude};
 use PHPUnit\Framework\TestCase;
 
 class LongitudeTest extends TestCase

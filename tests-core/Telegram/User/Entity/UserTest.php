@@ -13,7 +13,7 @@ class UserTest extends TestCase
     public function testGetValues()
     {
         $object = new User(
-            new User\Id(123123123),
+            new User\Id(10),
             new User\IsBot(false),
             new User\FirstName('first_name'),
             new User\LastName('last_name'),
@@ -21,64 +21,64 @@ class UserTest extends TestCase
             new Language\Subtag('ru'),
             new User\IsPremium(true),
             new User\AddedToAttachmentMenu(true),
-            null,
-            null,
-            null,
+            new User\CanJoinGroups(true),
+            new User\CanReadAllGroupMessages(true),
+            new User\SupportsInlineQueries(true),
         );
 
         $this->assertEquals(
-            123123123,
-            $object->getId()->getValue()
+            10,
+            $object->id->getValue()
         );
 
         $this->assertEquals(
             false,
-            $object->getIsBot()->getValue()
+            $object->isBot->getValue()
         );
 
         $this->assertEquals(
             'first_name',
-            $object->getFirstName()->getValue()
+            $object->firstName->getValue()
         );
 
         $this->assertEquals(
             'last_name',
-            $object->getLastName()->getValue()
+            $object->lastName->getValue()
         );
 
         $this->assertEquals(
             'username',
-            $object->getUsername()->getValue()
+            $object->username->getValue()
         );
 
         $this->assertEquals(
             'ru',
-            $object->getLanguageCode()->getValue()
+            $object->languageCode->getValue()
         );
 
         $this->assertEquals(
             true,
-            $object->getIsPremium()->getValue()
+            $object->isPremium->getValue()
         );
 
         $this->assertEquals(
             true,
-            $object->getAddedToAttachmentMenu()->getValue()
+            $object->addedToAttachmentMenu->getValue()
         );
 
         $this->assertEquals(
-            null,
-            $object->getCanJoinGroups()
+            true,
+            $object->canJoinGroups->getValue()
         );
 
         $this->assertEquals(
-            null,
-            $object->getCanReadAllGroupMessages()
+            true,
+            $object->canReadAllGroupMessages->getValue()
         );
 
         $this->assertEquals(
-            null,
-            $object->getSupportsInlineQueries()
+            true,
+            $object->supportsInlineQueries->getValue()
         );
     }
 }

@@ -12,7 +12,7 @@ class AssociativeArrayTest extends TestCase
     public function testGetValue()
     {
         $object = new AssociativeArray([
-            'id' => 123123123,
+            'id' => 10,
             'is_bot' => false,
             'first_name' => 'first_name',
             'last_name' => 'last_name',
@@ -26,58 +26,58 @@ class AssociativeArrayTest extends TestCase
         ]);
 
         $this->assertEquals(
-            123123123,
-            $object->getId()->getValue()
+            10,
+            $object->id->getValue()
         );
 
         $this->assertEquals(
             false,
-            $object->getIsBot()->getValue()
+            $object->isBot->getValue()
         );
 
         $this->assertEquals(
             'first_name',
-            $object->getFirstName()->getValue()
+            $object->firstName->getValue()
         );
 
         $this->assertEquals(
             'last_name',
-            $object->getLastName()->getValue()
+            $object->lastName->getValue()
         );
 
         $this->assertEquals(
             'username',
-            $object->getUsername()->getValue()
+            $object->username->getValue()
         );
 
         $this->assertEquals(
             'ru',
-            $object->getLanguageCode()->getValue()
+            $object->languageCode->getValue()
         );
 
         $this->assertEquals(
             true,
-            $object->getIsPremium()->getValue()
+            $object->isPremium->getValue()
         );
 
         $this->assertEquals(
             true,
-            $object->getAddedToAttachmentMenu()->getValue()
+            $object->addedToAttachmentMenu->getValue()
         );
 
         $this->assertEquals(
             true,
-            $object->getCanJoinGroups()->getValue()
+            $object->canJoinGroups->getValue()
         );
 
         $this->assertEquals(
             true,
-            $object->getCanReadAllGroupMessages()->getValue()
+            $object->canReadAllGroupMessages->getValue()
         );
 
         $this->assertEquals(
             true,
-            $object->getSupportsInlineQueries()->getValue()
+            $object->supportsInlineQueries->getValue()
         );
     }
 }

@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Core\Tests\Telegram\Poll\Entity\PollOption;
 
-use Core\Telegram\Poll\Entity\PollOption\Exception\InvalidTextException;
-use Core\Telegram\Poll\Entity\PollOption\Text;
+use Core\Telegram\Poll\Entity\PollOption\{Exception\InvalidTextException, Text};
 use PHPUnit\Framework\TestCase;
 
 class TextTest extends TestCase

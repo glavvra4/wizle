@@ -4,61 +4,22 @@ declare(strict_types=1);
 
 namespace Core\Telegram\Chat\Proxy\ChatLocation;
 
-use Core\Common\Proxy\BaseAssociativeArray;
 use Core\Telegram\Chat\Entity\ChatLocation;
-use Core\Telegram\Chat\Entity\ChatLocationInterface;
 use Core\Telegram\Location\Proxy\Location\AssociativeArray as LocationAssociativeArrayProxy;
-use Core\Telegram\Location\Entity\LocationInterface;
-use Exception;
+use JetBrains\PhpStorm\ArrayShape;
 
-class AssociativeArray extends BaseAssociativeArray implements ChatLocationInterface
+readonly class AssociativeArray extends ChatLocation
 {
-    protected ChatLocation $chatLocation;
-
-    /**
-     * @inheritDoc
-     */
-    protected function getFieldTypes(): array
-    {
-        return [
+    public function __construct(
+        #[ArrayShape([
             'location' => 'array',
             'address' => 'string'
-        ];
-    }
-
-    /**
-     * @inheritDoc
-     */
-    protected function getMandatoryFields(): array
+        ])] array $data
+    )
     {
-        return [
-            'location',
-            'address',
-        ];
-    }
-
-    /**
-     * @param array $data
-     *
-     * @throws Exception if invalid location data given
-     */
-    public function __construct(array $data)
-    {
-        $this->validateFields($data);
-
-        $this->chatLocation = new ChatLocation(
+        parent::__construct(
             new LocationAssociativeArrayProxy($data['location']),
             new ChatLocation\Address($data['address'])
         );
-    }
-
-    public function getLocation(): LocationInterface
-    {
-        return $this->chatLocation->getLocation();
-    }
-
-    public function getAddress(): ChatLocation\Address
-    {
-        return $this->chatLocation->getAddress();
     }
 }

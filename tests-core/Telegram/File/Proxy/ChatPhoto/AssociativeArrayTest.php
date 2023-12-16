@@ -20,22 +20,22 @@ class AssociativeArrayTest extends TestCase
 
         $this->assertEquals(
             'small_file_id',
-            $object->getSmallFileId()->getValue()
+            $object->smallFile->fileId->getValue()
         );
 
         $this->assertEquals(
             'small_file_unique_id',
-            $object->getSmallFileUniqueId()->getValue()
+            $object->smallFile->fileUniqueId->getValue()
         );
 
         $this->assertEquals(
             'big_file_id',
-            $object->getBigFileId()->getValue()
+            $object->bigFile->fileId->getValue()
         );
 
         $this->assertEquals(
             'big_file_unique_id',
-            $object->getBigFileUniqueId()->getValue()
+            $object->bigFile->fileUniqueId->getValue()
         );
     }
 }

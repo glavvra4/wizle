@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Core\Tests\Telegram\Poll\Entity\Poll;
 
-use Core\Telegram\Poll\Entity\Poll\Exception\InvalidTotalVoterCountException;
-use Core\Telegram\Poll\Entity\Poll\TotalVoterCount;
+use Core\Telegram\Poll\Entity\Poll\{Exception\InvalidTotalVoterCountException, TotalVoterCount};
 use PHPUnit\Framework\TestCase;
 
 class TotalVoterCountTest extends TestCase

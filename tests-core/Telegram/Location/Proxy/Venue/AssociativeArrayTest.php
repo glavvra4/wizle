@@ -10,19 +10,12 @@ use PHPUnit\Framework\TestCase;
 
 class AssociativeArrayTest extends TestCase
 {
-    /**
-     * @throws Exception
-     */
     public function testGetValues()
     {
         $object = new AssociativeArray([
             'location' => [
-                'longitude' => 45.072314,
-                'latitude' => 39.039317,
-                'horizontal_accuracy' => 10,
-                'live_period' => 200,
-                'heading' => 180,
-                'proximity_alert_radius' => 100
+                'longitude' => 10,
+                'latitude' => 11,
             ],
             'title' => 'test_title',
             'address' => 'test_address',
@@ -33,38 +26,38 @@ class AssociativeArrayTest extends TestCase
         ]);
 
         $this->assertEquals(
-            45.072314,
-            $object->getLocation()->getLongitude()->getValue()
+            10,
+            $object->location->longitude->getValue()
         );
 
         $this->assertEquals(
             'test_title',
-            $object->getTitle()->getValue()
+            $object->title->getValue()
         );
 
         $this->assertEquals(
             'test_address',
-            $object->getAddress()->getValue()
+            $object->address->getValue()
         );
 
         $this->assertEquals(
             'test_foursquare_id',
-            $object->getFoursquareId()->getValue()
+            $object->foursquareId->getValue()
         );
 
         $this->assertEquals(
             'test_foursquare_type',
-            $object->getFoursquareType()->getValue()
+            $object->foursquareType->getValue()
         );
 
         $this->assertEquals(
             'test_google_place_id',
-            $object->getGooglePlaceId()->getValue()
+            $object->googlePlaceId->getValue()
         );
 
         $this->assertEquals(
             'test_google_place_type',
-            $object->getGooglePlaceType()->getValue()
+            $object->googlePlaceType->getValue()
         );
     }
 }

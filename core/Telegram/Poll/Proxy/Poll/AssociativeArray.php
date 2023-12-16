@@ -4,71 +4,33 @@ declare(strict_types=1);
 
 namespace Core\Telegram\Poll\Proxy\Poll;
 
-use Core\Common\Proxy\BaseAssociativeArray;
 use Core\Telegram\Message\Proxy\MessageEntities\IndexedArray as MessageEntitiesIndexedArrayProxy;
-use Core\Telegram\Message\Entity\MessageEntitiesInterface;
-use Core\Telegram\Poll\Proxy\PollOptions\IndexedArray as PollOptionsIndexedArrayProxy;
 use Core\Telegram\Poll\Entity\Poll;
-use Core\Telegram\Poll\Entity\PollInterface;
 use Core\Telegram\Poll\Entity\PollOption;
-use Core\Telegram\Poll\Entity\PollOptionsInterface;
-use DateInterval;
-use DateTimeImmutable;
-use Exception;
+use Core\Telegram\Poll\Proxy\PollOptions\IndexedArray as PollOptionsIndexedArrayProxy;
+use JetBrains\PhpStorm\ArrayShape;
 
-class AssociativeArray extends BaseAssociativeArray implements PollInterface
+readonly class AssociativeArray extends Poll
 {
-    protected Poll $poll;
-
-    /**
-     * @inheritDoc
-     */
-    protected function getFieldTypes(): array
-    {
-        return [
+    public function __construct(
+        #[ArrayShape([
             'id' => 'string',
             'question' => 'string',
             'options' => 'array',
-            'total_voter_count' => 'integer',
-            'is_closed' => 'boolean',
-            'is_anonymous' => 'boolean',
+            'total_voter_count' => 'int',
+            'is_closed' => 'bool',
+            'is_anonymous' => 'bool',
             'type' => 'string',
-            'allows_multiple_answers' => 'boolean',
-            'correct_option_id' => 'integer',
+            'allows_multiple_answers' => 'bool',
+            'correct_option_id' => 'int',
             'explanation' => 'string',
             'explanation_entities' => 'array',
-            'open_period' => 'integer',
-            'close_date' => 'integer'
-        ];
-    }
-
-    /**
-     * @inheritDoc
-     */
-    protected function getMandatoryFields(): array
+            'open_period' => 'int',
+            'close_date' => 'int'
+        ])] array $data
+    )
     {
-        return [
-            'id',
-            'question',
-            'options',
-            'total_voter_count',
-            'is_closed',
-            'is_anonymous',
-            'type',
-            'allows_multiple_answers'
-        ];
-    }
-
-    /**
-     * @param array{id: string, question: string, options: array, total_voter_count: integer, is_closed: boolean, is_anonymous: boolean, type: string, allows_multiple_answers: boolean, correct_option_id: integer, explanation: string, explanation_entities: array, open_period: integer, close_date: integer} $data
-     *
-     * @throws Exception
-     */
-    public function __construct(array $data)
-    {
-        $this->validateFields($data);
-
-        $this->poll = new Poll(
+        parent::__construct(
             new Poll\Id($data['id']),
             new Poll\Question($data['question']),
             new PollOptionsIndexedArrayProxy($data['options']),
@@ -77,86 +39,21 @@ class AssociativeArray extends BaseAssociativeArray implements PollInterface
             new Poll\IsAnonymous($data['is_anonymous']),
             new Poll\Type($data['type']),
             new Poll\AllowsMultipleAnswers($data['allows_multiple_answers']),
-            (array_key_exists('correct_option_id', $data) && $data['correct_option_id'] !== null)
+            isset($data['correct_option_id'])
                 ? new PollOption\Id($data['correct_option_id'])
                 : null,
-            (array_key_exists('explanation', $data) && $data['explanation'] !== null)
+            isset($data['explanation'])
                 ? new Poll\Explanation($data['explanation'])
                 : null,
-            (array_key_exists('explanation_entities', $data) && $data['explanation_entities'] !== null)
+            isset($data['explanation_entities'])
                 ? new MessageEntitiesIndexedArrayProxy($data['explanation_entities'])
                 : null,
-            (array_key_exists('open_period', $data) && $data['open_period'] !== null)
-                ? new Poll\OpenPeriod(new DateInterval('PT' . $data['open_period'] . 'S'))
+            isset($data['open_period'])
+                ? new Poll\OpenPeriod($data['open_period'])
                 : null,
-            (array_key_exists('close_date', $data) && $data['close_date'] !== null)
-                ? new Poll\CloseDate((new DateTimeImmutable())->setTimestamp($data['close_date']))
+            isset($data['close_date'])
+                ? new Poll\Close($data['close_date'])
                 : null,
         );
-    }
-
-    public function getId(): Poll\Id
-    {
-        return $this->poll->getId();
-    }
-
-    public function getQuestion(): Poll\Question
-    {
-        return $this->poll->getQuestion();
-    }
-
-    public function getOptions(): PollOptionsInterface
-    {
-        return $this->poll->getOptions();
-    }
-
-    public function getTotalVoterCount(): Poll\TotalVoterCount
-    {
-        return $this->poll->getTotalVoterCount();
-    }
-
-    public function getIsClosed(): Poll\IsClosed
-    {
-        return $this->poll->getIsClosed();
-    }
-
-    public function getIsAnonymous(): Poll\IsAnonymous
-    {
-        return $this->poll->getIsAnonymous();
-    }
-
-    public function getType(): Poll\Type
-    {
-        return $this->poll->getType();
-    }
-
-    public function getAllowsMultipleAnswers(): Poll\AllowsMultipleAnswers
-    {
-        return $this->poll->getAllowsMultipleAnswers();
-    }
-
-    public function getCorrectOptionId(): ?PollOption\Id
-    {
-        return $this->poll->getCorrectOptionId();
-    }
-
-    public function getExplanation(): ?Poll\Explanation
-    {
-        return $this->poll->getExplanation();
-    }
-
-    public function getExplanationEntities(): ?MessageEntitiesInterface
-    {
-        return $this->poll->getExplanationEntities();
-    }
-
-    public function getOpenPeriod(): ?Poll\OpenPeriod
-    {
-        return $this->poll->getOpenPeriod();
-    }
-
-    public function getCloseDate(): ?Poll\CloseDate
-    {
-        return $this->poll->getCloseDate();
     }
 }

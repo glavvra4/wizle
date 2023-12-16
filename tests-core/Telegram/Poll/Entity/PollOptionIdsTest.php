@@ -6,8 +6,6 @@ namespace Core\Tests\Telegram\Poll\Entity;
 
 use Core\Telegram\Poll\Entity\PollOption;
 use Core\Telegram\Poll\Entity\PollOptionIds;
-use Core\Telegram\Poll\Entity\PollOptionInterface;
-use Core\Telegram\Poll\Entity\PollOptions;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
@@ -15,17 +13,9 @@ class PollOptionIdsTest extends TestCase
 {
     public function testGetValues()
     {
-        $pollOptionIdStub1 = $this->createStub(PollOption\Id::class);
-        $pollOptionIdStub1->method('getValue')
-            ->willReturn(10);
-
-        $pollOptionIdStub2 = $this->createStub(PollOption\Id::class);
-        $pollOptionIdStub2->method('getValue')
-            ->willReturn(11);
-
         $object = new PollOptionIds([
-            $pollOptionIdStub1,
-            $pollOptionIdStub2
+            new PollOption\Id(10),
+            new PollOption\Id(11)
         ]);
 
         // Testing ArrayAccess
@@ -65,13 +55,13 @@ class PollOptionIdsTest extends TestCase
         $object = new PollOptionIds([]);
 
         $this->expectError();
-        $object[0] = $this->createStub(PollOption\Id::class);
+        $object[0] = new PollOption\Id(10);
     }
 
     public function testArrayAccessUnsetError()
     {
         $object = new PollOptionIds([
-            $this->createStub(PollOption\Id::class)
+            new PollOption\Id(10)
         ]);
 
         $this->expectError();

@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Core\Tests\Telegram\Message\Entity;
 
-use Core\Telegram\Message\Entity\MessageEntities;
-use Core\Telegram\Message\Entity\MessageEntity;
-use Core\Telegram\Message\Entity\MessageEntityInterface;
+use Core\Telegram\Message\Entity\{MessageEntities, MessageEntity};
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
@@ -14,33 +12,44 @@ class MessageEntitiesTest extends TestCase
 {
     public function testGetValues()
     {
-        $messageEntityStub1 = $this->createStub(MessageEntity::class);
-        $messageEntityStub1->method('getType')
-            ->willReturn(new MessageEntity\Type('mention'));
-
-        $messageEntityStub2 = $this->createStub(MessageEntity::class);
-        $messageEntityStub2->method('getType')
-            ->willReturn(new MessageEntity\Type('hashtag'));
-
-        $object = new MessageEntities([$messageEntityStub1, $messageEntityStub2]);
+        $object = new MessageEntities([
+            new MessageEntity(
+                new MessageEntity\Type('pre'),
+                new MessageEntity\Offset(10),
+                new MessageEntity\Length(11),
+                null,
+                null,
+                new MessageEntity\Language('php'),
+                null
+            ),
+            new MessageEntity(
+                new MessageEntity\Type('hashtag'),
+                new MessageEntity\Offset(10),
+                new MessageEntity\Length(11),
+                null,
+                null,
+                null,
+                null
+            )
+        ]);
 
         // Testing ArrayAccess
 
         $this->assertEquals(
-            'mention',
-            $object[0]->getType()->getValue()
+            'pre',
+            $object[0]->type->getValue()
         );
 
         $this->assertEquals(
             'hashtag',
-            $object[1]->getType()->getValue()
+            $object[1]->type->getValue()
         );
 
         // Testing Iterator
 
         foreach ($object as $key => $item) {
             $this->assertInstanceOf(
-                MessageEntityInterface::class,
+                MessageEntity::class,
                 $item
             );
 
@@ -61,13 +70,29 @@ class MessageEntitiesTest extends TestCase
         $object = new MessageEntities([]);
 
         $this->expectError();
-        $object[0] = $this->createStub(MessageEntity::class);
+        $object[0] = new MessageEntity(
+            new MessageEntity\Type('pre'),
+            new MessageEntity\Offset(10),
+            new MessageEntity\Length(11),
+            null,
+            null,
+            new MessageEntity\Language('php'),
+            null
+        );
     }
 
     public function testArrayAccessUnsetError()
     {
         $object = new MessageEntities([
-            $this->createStub(MessageEntity::class)
+            new MessageEntity(
+                new MessageEntity\Type('pre'),
+                new MessageEntity\Offset(10),
+                new MessageEntity\Length(11),
+                null,
+                null,
+                new MessageEntity\Language('php'),
+                null
+            )
         ]);
 
         $this->expectError();

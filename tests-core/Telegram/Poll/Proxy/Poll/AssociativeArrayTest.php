@@ -10,9 +10,6 @@ use PHPUnit\Framework\TestCase;
 
 class AssociativeArrayTest extends TestCase
 {
-    /**
-     * @throws Exception
-     */
     public function testGetValues()
     {
         $object = new AssociativeArray([
@@ -43,72 +40,72 @@ class AssociativeArrayTest extends TestCase
                 ]
             ],
             'open_period' => 16,
-            'close_date' => 1677337596
+            'close_date' => 17
         ]);
 
         $this->assertEquals(
             'id',
-            $object->getId()->getValue()
+            $object->id->getValue()
         );
 
         $this->assertEquals(
             'question',
-            $object->getQuestion()->getValue()
+            $object->question->getValue()
         );
 
         $this->assertEquals(
             10,
-            $object->getOptions()[0]->getVoterCount()->getValue()
+            $object->options[0]->voterCount->getValue()
         );
 
         $this->assertEquals(
             12,
-            $object->getTotalVoterCount()->getValue()
+            $object->totalVoterCount->getValue()
         );
 
         $this->assertEquals(
             true,
-            $object->getIsClosed()->getValue()
+            $object->isClosed->getValue()
         );
 
         $this->assertEquals(
             true,
-            $object->getIsAnonymous()->getValue()
+            $object->isAnonymous->getValue()
         );
 
         $this->assertEquals(
             'type',
-            $object->getType()->getValue()
+            $object->type->getValue()
         );
 
         $this->assertEquals(
             true,
-            $object->getAllowsMultipleAnswers()->getValue()
+            $object->allowsMultipleAnswers->getValue()
         );
 
         $this->assertEquals(
             13,
-            $object->getCorrectOptionId()->getValue()
+            $object->correctOptionId->getValue()
         );
 
         $this->assertEquals(
             'explanation',
-            $object->getExplanation()->getValue()
+            $object->explanation->getValue()
         );
 
         $this->assertEquals(
             'hashtag',
-            $object->getExplanationEntities()[0]->getType()->getValue()
+            $object->explanationEntities[0]->type->getValue()
         );
 
         $this->assertEquals(
             16,
-            $object->getOpenPeriod()->getValue()->s
+            $object->openPeriod->getValue()
         );
 
         $this->assertEquals(
-            1677337596,
-            $object->getCloseDate()->getValue()->getTimestamp()
+            17,
+            $object->closeDate->getValue()
         );
     }
 }

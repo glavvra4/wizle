@@ -25,47 +25,47 @@ class CurrencyTest extends TestCase
 
         $this->assertEquals(
             'AED',
-            $object->getCode()->getValue()
+            $object->code->getValue()
         );
 
         $this->assertEquals(
             'United Arab Emirates Dirham',
-            $object->getTitle()->getValue()
+            $object->title->getValue()
         );
 
         $this->assertEquals(
             'AED',
-            $object->getSymbol()->getValue()
+            $object->symbol->getValue()
         );
 
         $this->assertEquals(
             'د.إ.‏',
-            $object->getNative()->getValue()
+            $object->native->getValue()
         );
 
         $this->assertEquals(
             ',',
-            $object->getThousandsSeparator()->getValue()
+            $object->thousandsSeparator->getValue()
         );
 
         $this->assertEquals(
             '.',
-            $object->getDecimalSeparator()->getValue()
+            $object->decimalSeparator->getValue()
         );
 
         $this->assertEquals(
             true,
-            $object->getSymbolLeft()->getValue()
+            $object->symbolLeft->getValue()
         );
 
         $this->assertEquals(
             true,
-            $object->getSpaceBetween()->getValue()
+            $object->spaceBetween->getValue()
         );
 
         $this->assertEquals(
             2,
-            $object->getExponent()->getValue()
+            $object->exponent->getValue()
         );
     }
 }

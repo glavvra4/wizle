@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace Core\Tests\Telegram\Poll\Entity;
 
-use Core\Telegram\Poll\Entity\Poll;
-use Core\Telegram\Poll\Entity\PollAnswer;
-use Core\Telegram\Poll\Entity\PollOption;
-use Core\Telegram\Poll\Entity\PollOptionIds;
+use Core\Language\Entity\Language;
+use Core\Telegram\Poll\Entity\{Poll, PollAnswer, PollOption, PollOptionIds};
 use Core\Telegram\User\Entity\User;
 use PHPUnit\Framework\TestCase;
 
@@ -15,29 +13,29 @@ class PollAnswerTest extends TestCase
 {
     public function testGetValues()
     {
-        $userStub = $this->createStub(User::class);
-        $userStub->method('getId')
-            ->willReturn(new User\Id(10));
-
         $object = new PollAnswer(
             new Poll\Id('poll_id'),
-            $userStub,
+            new User(
+                new User\Id(10),
+                new User\IsBot(false),
+                new User\FirstName('first_name'),
+            ),
             new PollOptionIds([new PollOption\Id(11)])
         );
 
         $this->assertEquals(
             'poll_id',
-            $object->getPollId()->getValue()
+            $object->pollId->getValue()
         );
 
         $this->assertEquals(
             10,
-            $object->getUser()->getId()->getValue()
+            $object->user->id->getValue()
         );
 
         $this->assertEquals(
             11,
-            $object->getOptionIds()[0]->getValue()
+            $object->optionIds[0]->getValue()
         );
     }
 }

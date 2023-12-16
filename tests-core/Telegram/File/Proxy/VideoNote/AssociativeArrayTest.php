@@ -10,9 +10,6 @@ use PHPUnit\Framework\TestCase;
 
 class AssociativeArrayTest extends TestCase
 {
-    /**
-     * @throws Exception
-     */
     public function testGetValues()
     {
         $object = new AssociativeArray([
@@ -21,48 +18,42 @@ class AssociativeArrayTest extends TestCase
             'length' => 10,
             'duration' => 11,
             'thumbnail' => [
-                'file_id' => 'thumbnail_stub_file_id',
-                'file_unique_id' => 'thumbnail_stub_file_unique_id',
-                'width' => 10,
-                'height' => 11,
-                'file_size' => 12
+                'file_id' => 'thumbnail_file_id',
+                'file_unique_id' => 'thumbnail_file_unique_id',
+                'width' => 12,
+                'height' => 13,
             ],
-            'file_size' => 12
+            'file_size' => 14
         ]);
 
         $this->assertEquals(
             'file_id',
-            $object->getFileId()->getValue()
+            $object->fileId->getValue()
         );
 
         $this->assertEquals(
             'file_unique_id',
-            $object->getFileUniqueId()->getValue()
+            $object->fileUniqueId->getValue()
         );
 
         $this->assertEquals(
             10,
-            $object->getWidth()->getValue()
-        );
-
-        $this->assertEquals(
-            10,
-            $object->getHeight()->getValue()
+            $object->length->getValue()
         );
 
         $this->assertEquals(
             11,
-            $object->getDuration()->getValue()->s
+            $object->duration->getValue()
         );
 
         $this->assertEquals(
-            'thumbnail_stub_file_id',
-            $object->getThumbnail()->getFileId()->getValue()
+            'thumbnail_file_id',
+            $object->thumbnail->fileId->getValue()
         );
 
         $this->assertEquals(
-            12,
-            $object->getFileSize()->getValue()
+            14,
+            $object->fileSize->getValue()
         );
     }
 }

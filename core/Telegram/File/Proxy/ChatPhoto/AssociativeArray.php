@@ -6,69 +6,24 @@ namespace Core\Telegram\File\Proxy\ChatPhoto;
 
 use Core\Telegram\File\Entity\ChatPhoto;
 use Core\Telegram\File\Entity\File;
+use JetBrains\PhpStorm\ArrayShape;
 
-class AssociativeArray extends \Core\Common\Proxy\BaseAssociativeArray implements \Core\Telegram\File\Entity\ChatPhotoInterface
+readonly class AssociativeArray extends ChatPhoto
 {
-    protected ChatPhoto $chatPhoto;
-
-    /**
-     * @inheritDoc
-     */
-    protected function getFieldTypes(): array
-    {
-        return [
+    public function __construct(
+        #[ArrayShape([
             'small_file_id' => 'string',
             'small_file_unique_id' => 'string',
             'big_file_id' => 'string',
             'big_file_unique_id' => 'string'
-        ];
-    }
-
-    /**
-     * @inheritDoc
-     */
-    protected function getMandatoryFields(): array
+        ])] array $data
+    )
     {
-        return [
-            'small_file_id',
-            'small_file_unique_id',
-            'big_file_id',
-            'big_file_unique_id'
-        ];
-    }
-
-    /**
-     * @param array{small_file_id: string, small_file_unique_id: string, big_file_id: string, big_file_unique_id: string} $data
-     */
-    public function __construct(array $data)
-    {
-        $this->validateFields($data);
-
-        $this->chatPhoto = new ChatPhoto(
+        parent::__construct(
             new File\Id($data['small_file_id']),
             new File\UniqueId($data['small_file_unique_id']),
             new File\Id($data['big_file_id']),
             new File\UniqueId($data['big_file_unique_id'])
         );
-    }
-
-    public function getSmallFileId(): File\Id
-    {
-        return $this->chatPhoto->getSmallFileId();
-    }
-
-    public function getSmallFileUniqueId(): File\UniqueId
-    {
-        return $this->chatPhoto->getSmallFileUniqueId();
-    }
-
-    public function getBigFileId(): File\Id
-    {
-        return $this->chatPhoto->getBigFileId();
-    }
-
-    public function getBigFileUniqueId(): File\UniqueId
-    {
-        return $this->chatPhoto->getBigFileUniqueId();
     }
 }

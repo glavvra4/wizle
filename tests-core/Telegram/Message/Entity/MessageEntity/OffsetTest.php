@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Core\Tests\Telegram\Message\Entity\MessageEntity;
 
-use Core\Telegram\Message\Entity\MessageEntity\Exception\InvalidOffsetException;
-use Core\Telegram\Message\Entity\MessageEntity\Offset;
+use Core\Telegram\Message\Entity\MessageEntity\{Exception\InvalidOffsetException, Offset};
 use PHPUnit\Framework\TestCase;
 
 class OffsetTest extends TestCase

@@ -18,12 +18,12 @@ class PollOptionTest extends TestCase
 
         $this->assertEquals(
             'text',
-            $object->getText()->getValue()
+            $object->text->getValue()
         );
 
         $this->assertEquals(
             10,
-            $object->getVoterCount()->getValue()
+            $object->voterCount->getValue()
         );
     }
 }

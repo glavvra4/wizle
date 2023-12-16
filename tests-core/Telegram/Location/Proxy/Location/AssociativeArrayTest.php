@@ -10,48 +10,45 @@ use PHPUnit\Framework\TestCase;
 
 class AssociativeArrayTest extends TestCase
 {
-    /**
-     * @throws Exception
-     */
     public function testGetValues()
     {
         $object = new AssociativeArray([
-            'longitude' => 45.072314,
-            'latitude' => 39.039317,
-            'horizontal_accuracy' => 10,
-            'live_period' => 200,
-            'heading' => 180,
-            'proximity_alert_radius' => 100
+            'longitude' => 10,
+            'latitude' => 11,
+            'horizontal_accuracy' => 12,
+            'live_period' => 13,
+            'heading' => 14,
+            'proximity_alert_radius' => 15
         ]);
 
         $this->assertEquals(
-            45.072314,
-            $object->getLongitude()->getValue()
-        );
-
-        $this->assertEquals(
-            39.039317,
-            $object->getLatitude()->getValue()
-        );
-
-        $this->assertEquals(
             10,
-            $object->getHorizontalAccuracy()->getValue()
+            $object->longitude->getValue()
         );
 
         $this->assertEquals(
-            200,
-            $object->getLivePeriod()->getValue()->s
+            11,
+            $object->latitude->getValue()
         );
 
         $this->assertEquals(
-            180,
-            $object->getHeading()->getValue()
+            12,
+            $object->horizontalAccuracy->getValue()
         );
 
         $this->assertEquals(
-            100,
-            $object->getProximityAlertRadius()->getValue()
+            13,
+            $object->livePeriod->getValue()
+        );
+
+        $this->assertEquals(
+            14,
+            $object->heading->getValue()
+        );
+
+        $this->assertEquals(
+            15,
+            $object->proximityAlertRadius->getValue()
         );
     }
 }

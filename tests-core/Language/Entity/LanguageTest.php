@@ -18,12 +18,12 @@ class LanguageTest extends TestCase
 
         $this->assertEquals(
             'Arabic',
-            $object->getTitle()->getValue()
+            $object->title->getValue()
         );
 
         $this->assertEquals(
             'ar',
-            $object->getSubtag()->getValue()
+            $object->subtag->getValue()
         );
     }
 }

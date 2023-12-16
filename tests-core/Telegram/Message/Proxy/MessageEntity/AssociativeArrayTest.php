@@ -17,7 +17,7 @@ class AssociativeArrayTest extends TestCase
             'length' => 11,
             'url' => 'url',
             'user' => [
-                'id' => 10,
+                'id' => 123123123,
                 'is_bot' => false,
                 'first_name' => 'first_name',
                 'last_name' => 'last_name',
@@ -35,37 +35,37 @@ class AssociativeArrayTest extends TestCase
 
         $this->assertEquals(
             'mention',
-            $object->getType()->getValue()
+            $object->type->getValue()
         );
 
         $this->assertEquals(
             10,
-            $object->getOffset()->getValue()
+            $object->offset->getValue()
         );
 
         $this->assertEquals(
             11,
-            $object->getLength()->getValue()
+            $object->length->getValue()
         );
 
         $this->assertEquals(
             'url',
-            $object->getUrl()->getValue()
+            $object->url->getValue()
         );
 
         $this->assertEquals(
-            10,
-            $object->getUser()->getId()->getValue()
+            123123123,
+            $object->user->id->getValue()
         );
 
         $this->assertEquals(
             'language',
-            $object->getLanguage()->getValue()
+            $object->language->getValue()
         );
 
         $this->assertEquals(
             'custom_emoji_id',
-            $object->getCustomEmojiId()->getValue()
+            $object->customEmojiId->getValue()
         );
     }
 }

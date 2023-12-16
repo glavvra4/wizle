@@ -11,13 +11,11 @@ class Updates implements UpdatesInterface
 {
     private int $position = 0;
 
-    /** @var array<UpdateInterface>  */
+    /** @var array<UpdateInterface> */
     private array $container = [];
 
     /**
      * @param array<UpdateInterface> $entities
-     *
-     * @throws InvalidArgumentException
      */
     public function __construct(array $entities)
     {
@@ -35,16 +33,6 @@ class Updates implements UpdatesInterface
     /**
      * @param mixed $offset
      *
-     * @return bool
-     */
-    public function offsetExists(mixed $offset): bool
-    {
-        return isset($this->container[$offset]);
-    }
-
-    /**
-     * @param mixed $offset
-     *
      * @return UpdateInterface|null
      */
     public function offsetGet(mixed $offset): ?UpdateInterface
@@ -52,6 +40,16 @@ class Updates implements UpdatesInterface
         return ($this->offsetExists($offset))
             ? $this->container[$offset]
             : null;
+    }
+
+    /**
+     * @param mixed $offset
+     *
+     * @return bool
+     */
+    public function offsetExists(mixed $offset): bool
+    {
+        return isset($this->container[$offset]);
     }
 
     /**

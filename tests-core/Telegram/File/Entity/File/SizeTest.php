@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Core\Tests\Telegram\File\Entity\File;
 
-use Core\Telegram\File\Entity\File\Exception\InvalidSizeException;
-use Core\Telegram\File\Entity\File\Size;
+use Core\Telegram\File\Entity\File\{Exception\InvalidSizeException, Size};
 use PHPUnit\Framework\TestCase;
 
 class SizeTest extends TestCase

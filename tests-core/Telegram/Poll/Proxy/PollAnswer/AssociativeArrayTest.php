@@ -33,17 +33,17 @@ class AssociativeArrayTest extends TestCase
 
         $this->assertEquals(
             'poll_id',
-            $object->getPollId()->getValue()
+            $object->pollId->getValue()
         );
 
         $this->assertEquals(
             10,
-            $object->getUser()->getId()->getValue()
+            $object->user->id->getValue()
         );
 
         $this->assertEquals(
             11,
-            $object->getOptionIds()[0]->getValue()
+            $object->optionIds[0]->getValue()
         );
     }
 }

@@ -4,44 +4,20 @@ declare(strict_types=1);
 
 namespace Core\Telegram\Poll\Entity;
 
-use Core\Telegram\User\Entity\UserInterface;
+use Core\Telegram\User\Entity\User;
 
-class PollAnswer implements PollAnswerInterface
+readonly class PollAnswer implements PollAnswerInterface
 {
     /**
      * @param Poll\Id $pollId
-     * @param UserInterface $user
-     * @param PollOptionIdsInterface $optionIds
+     * @param User $user
+     * @param PollOptionIds $optionIds
      */
     public function __construct(
-        protected Poll\Id $pollId,
-        protected UserInterface $user,
-        protected PollOptionIdsInterface $optionIds
+        public Poll\Id       $pollId,
+        public User          $user,
+        public PollOptionIds $optionIds
     )
     {
-    }
-
-    /**
-     * @return Poll\Id
-     */
-    public function getPollId(): Poll\Id
-    {
-        return $this->pollId;
-    }
-
-    /**
-     * @return UserInterface
-     */
-    public function getUser(): UserInterface
-    {
-        return $this->user;
-    }
-
-    /**
-     * @return PollOptionIdsInterface
-     */
-    public function getOptionIds(): PollOptionIdsInterface
-    {
-        return $this->optionIds;
     }
 }

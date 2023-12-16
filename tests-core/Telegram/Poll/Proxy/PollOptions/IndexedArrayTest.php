@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Core\Tests\Telegram\Poll\Proxy\PollOptions;
 
+use Core\Telegram\Poll\Entity\PollOption;
 use Core\Telegram\Poll\Proxy\PollOptions\IndexedArray;
-use Core\Telegram\Poll\Entity\PollOptionInterface;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
@@ -28,19 +28,19 @@ class IndexedArrayTest extends TestCase
 
         $this->assertEquals(
             10,
-            $object[0]->getVoterCount()->getValue()
+            $object[0]->voterCount->getValue()
         );
 
         $this->assertEquals(
             11,
-            $object[1]->getVoterCount()->getValue()
+            $object[1]->voterCount->getValue()
         );
 
         // Testing Iterator
 
         foreach ($object as $key => $item) {
             $this->assertInstanceOf(
-                PollOptionInterface::class,
+                PollOption::class,
                 $item
             );
 
@@ -61,7 +61,10 @@ class IndexedArrayTest extends TestCase
         $object = new IndexedArray([]);
 
         $this->expectError();
-        $object[0] = 10;
+        $object[0] = new PollOption(
+            new PollOption\Text('text'),
+            new PollOption\VoterCount(10)
+        );
     }
 
     public function testArrayAccessUnsetError()

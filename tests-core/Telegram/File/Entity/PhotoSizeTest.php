@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Core\Tests\Telegram\File\Entity;
 
-use Core\Telegram\File\Entity\PhotoSize;
-use Core\Telegram\File\Entity\File;
+use Core\Telegram\File\Entity\{File, PhotoSize};
 use PHPUnit\Framework\TestCase;
 
 class PhotoSizeTest extends TestCase
@@ -22,27 +21,27 @@ class PhotoSizeTest extends TestCase
 
         $this->assertEquals(
             'file_id',
-            $object->getFileId()->getValue()
+            $object->fileId->getValue()
         );
 
         $this->assertEquals(
             'file_unique_id',
-            $object->getFileUniqueId()->getValue()
+            $object->fileUniqueId->getValue()
         );
 
         $this->assertEquals(
             10,
-            $object->getWidth()->getValue()
+            $object->width->getValue()
         );
 
         $this->assertEquals(
             11,
-            $object->getHeight()->getValue()
+            $object->height->getValue()
         );
 
         $this->assertEquals(
             12,
-            $object->getFileSize()->getValue()
+            $object->fileSize->getValue()
         );
     }
 }

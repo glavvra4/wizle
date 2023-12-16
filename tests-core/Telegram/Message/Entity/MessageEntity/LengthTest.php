@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Core\Tests\Telegram\Message\Entity\MessageEntity;
 
-use Core\Telegram\Message\Entity\MessageEntity\Exception\InvalidLengthException;
-use Core\Telegram\Message\Entity\MessageEntity\Length;
+use Core\Telegram\Message\Entity\MessageEntity\{Exception\InvalidLengthException, Length};
 use PHPUnit\Framework\TestCase;
 
 class LengthTest extends TestCase

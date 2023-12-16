@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Core\Tests\Telegram\Location\Entity\Location;
 
-use Core\Telegram\Location\Entity\Location\Exception\InvalidHorizontalAccuracyException;
-use Core\Telegram\Location\Entity\Location\HorizontalAccuracy;
+use Core\Telegram\Location\Entity\Location\{Exception\InvalidHorizontalAccuracyException, HorizontalAccuracy};
 use PHPUnit\Framework\TestCase;
 
 class HorizontalAccuracyTest extends TestCase

@@ -10,9 +10,6 @@ use PHPUnit\Framework\TestCase;
 
 class AssociativeArrayTest extends TestCase
 {
-    /**
-     * @throws Exception
-     */
     public function testGetValues()
     {
         $object = new AssociativeArray([
@@ -25,27 +22,27 @@ class AssociativeArrayTest extends TestCase
 
         $this->assertEquals(
             'file_id',
-            $object->getFileId()->getValue()
+            $object->fileId->getValue()
         );
 
         $this->assertEquals(
             'file_unique_id',
-            $object->getFileUniqueId()->getValue()
+            $object->fileUniqueId->getValue()
         );
 
         $this->assertEquals(
             10,
-            $object->getDuration()->getValue()->s
+            $object->duration->getValue()
         );
 
         $this->assertEquals(
             'mime_type',
-            $object->getMimeType()->getValue()
+            $object->mimeType->getValue()
         );
 
         $this->assertEquals(
             11,
-            $object->getFileSize()->getValue()
+            $object->fileSize->getValue()
         );
     }
 }
