@@ -18,19 +18,11 @@ class MessageEntitiesTest extends TestCase
                 new MessageEntity\Type('pre'),
                 new MessageEntity\Offset(10),
                 new MessageEntity\Length(11),
-                null,
-                null,
-                new MessageEntity\Language('php'),
-                null
             ),
             new MessageEntity(
                 new MessageEntity\Type('hashtag'),
                 new MessageEntity\Offset(10),
                 new MessageEntity\Length(11),
-                null,
-                null,
-                null,
-                null
             )
         ]);
 
@@ -75,10 +67,6 @@ class MessageEntitiesTest extends TestCase
             new MessageEntity\Type('pre'),
             new MessageEntity\Offset(10),
             new MessageEntity\Length(11),
-            null,
-            null,
-            new MessageEntity\Language('php'),
-            null
         );
     }
 
@@ -89,10 +77,6 @@ class MessageEntitiesTest extends TestCase
                 new MessageEntity\Type('pre'),
                 new MessageEntity\Offset(10),
                 new MessageEntity\Length(11),
-                null,
-                null,
-                new MessageEntity\Language('php'),
-                null
             )
         ]);
 
