@@ -1,4 +1,4 @@
-name: PHP Composer
+name: Codecov PHPUnit Tests
 
 on:
   push:
