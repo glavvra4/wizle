@@ -6,6 +6,7 @@ namespace Core\Telegram\Message\Entity\Contact;
 
 use Core\Common\Entity\StringValueObject;
 
+/** Contact's phone number */
 class PhoneNumber extends StringValueObject
 {
 }

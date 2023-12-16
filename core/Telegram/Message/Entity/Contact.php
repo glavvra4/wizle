@@ -6,6 +6,7 @@ namespace Core\Telegram\Message\Entity;
 
 use Core\Telegram\User\Entity\User;
 
+/** This object represents a phone contact. */
 readonly class Contact implements ContactInterface
 {
     /**
