@@ -1,0 +1,44 @@
+FROM php:8.2-cli
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends libpq-dev libpng-dev libxml2-dev \
+            libzip-dev libfreetype6-dev libjpeg62-turbo-dev libwebp-dev \
+            libgmp3-dev libpcre3-dev libcurl4-openssl-dev pkg-config && \
+    docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg --with-webp && \
+    docker-php-ext-configure gettext && \
+    docker-php-ext-configure opcache --enable-opcache && \
+    docker-php-ext-configure pcntl --enable-pcntl && \
+    docker-php-ext-configure soap && \
+    docker-php-ext-configure intl && \
+    docker-php-ext-install intl && \
+    docker-php-ext-install gettext && \
+    docker-php-ext-install pcntl && \
+    docker-php-ext-install gd && \
+    docker-php-ext-install opcache && \
+    docker-php-ext-install soap && \
+    docker-php-ext-install xml && \
+    docker-php-ext-install gmp && \
+    docker-php-ext-install pdo_pgsql && \
+    docker-php-ext-install opcache && \
+    docker-php-ext-install exif && \
+    docker-php-ext-install zip
+
+USER root
+
+ENV COMPOSER_ALLOW_SUPERUSER=1
+
+RUN curl -sS https://getcomposer.org/installer | php
+RUN mv composer.phar /usr/local/bin/composer
+RUN /usr/local/bin/composer self-update
+
+RUN rm -fr /var/www/html/var/cache/* && \
+    chmod -R +rw /var/www/html && \
+    chown -R www-data:www-data /var/www/html
+
+RUN mkdir -p /app && \
+    chown -R www-data:www-data /app  && \
+    chmod -R +rw /app
+
+USER www-data:www-data
+
+WORKDIR /app

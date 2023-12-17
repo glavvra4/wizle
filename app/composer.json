@@ -7,6 +7,9 @@
         "php": ">=8.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "doctrine/doctrine-bundle": "^2.11",
+        "doctrine/doctrine-migrations-bundle": "^3.3",
+        "doctrine/orm": "^2.17",
         "monolog/monolog": "^3.5",
         "symfony/console": "6.2.*",
         "symfony/dotenv": "6.2.*",
@@ -56,8 +59,8 @@
         "post-update-cmd": [
             "@auto-scripts"
         ],
-        "test": "php bin/phpunit",
-        "test-coverage-text": "php -d xdebug.mode=coverage bin/phpunit --coverage-text"
+        "tests": "php bin/phpunit",
+        "tests-coverage-text": "php -d xdebug.mode=coverage bin/phpunit --coverage-text"
     },
     "conflict": {
         "symfony/symfony": "*"

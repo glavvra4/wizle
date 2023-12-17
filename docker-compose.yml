@@ -1,0 +1,27 @@
+services:
+    php-cli:
+        build:
+            context: ./docker/dev
+            dockerfile: php-cli.docker
+        working_dir: /app
+        restart: unless-stopped
+        tty: true
+        container_name: php-cli
+        volumes:
+            - ./app:/app
+        env_file:
+            - ./app/.env.local
+        networks:
+            - backend
+
+    postgres:
+        image: postgres:alpine
+        env_file:
+            - ./app/.env.local
+        networks:
+            - backend
+        container_name: postgres
+        restart: unless-stopped
+
+networks:
+    backend:

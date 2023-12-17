@@ -1,3 +1,8 @@
+/postgres/data/**
+!/postgres/data/.gitkeep
+/postgres/dump/**
+!/postgres/dump/.gitkeep
 
 # PhpStorm / IDEA
-/.idea/
+.idea/
+.DS_Store
