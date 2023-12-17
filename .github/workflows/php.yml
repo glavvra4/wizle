@@ -16,6 +16,7 @@ jobs:
 
             -   name: Move project files to root directory
                 run: |
+                    shopt -s dotglob
                     mv app/* .
                     rm -rf app
 
