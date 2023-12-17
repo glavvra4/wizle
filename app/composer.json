@@ -18,6 +18,7 @@
         "symfony/http-client": "6.2.*",
         "symfony/monolog-bundle": "^3.10",
         "symfony/runtime": "6.2.*",
+        "symfony/workflow": "6.2.*",
         "symfony/yaml": "6.2.*"
     },
     "config": {
@@ -75,6 +76,7 @@
         "phpunit/phpunit": "^9.5",
         "symfony/browser-kit": "6.2.*",
         "symfony/css-selector": "6.2.*",
+        "symfony/maker-bundle": "^1.50",
         "symfony/phpunit-bridge": "^6.2"
     }
 }
