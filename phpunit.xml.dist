@@ -16,14 +16,18 @@
     </php>
 
     <testsuites>
-        <testsuite name="Project Test Suite">
+        <testsuite name="Core Test Suite">
             <directory>tests-core</directory>
+        </testsuite>
+        <testsuite name="App Test Suite">
+            <directory>tests-src</directory>
         </testsuite>
     </testsuites>
 
     <coverage processUncoveredFiles="true">
         <include>
             <directory suffix=".php">core</directory>
+            <directory suffix=".php">src</directory>
         </include>
     </coverage>
 
