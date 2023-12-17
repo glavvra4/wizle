@@ -56,9 +56,9 @@ class BotApi
      * @throws JsonException
      */
     public function getUpdates(
-        int $offset = 0,
-        int $limit = 100,
-        int $timeout = 0,
+        int   $offset = 0,
+        int   $limit = 100,
+        int   $timeout = 0,
         array $allowed_updates = []
     ): Updates
     {

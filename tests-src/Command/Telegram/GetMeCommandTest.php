@@ -17,15 +17,18 @@ class GetMeCommandTest extends TestCase
     public function testSuccess(): void
     {
         $botApi = self::createMock(BotApi::class);
-        $botApi->method('getMe')
+
+        $command = new GetMeCommand($botApi);
+        $commandTester = new CommandTester($command);
+
+        $botApi
+            ->expects(self::once())
+            ->method('getMe')
             ->willReturn(new User(
                 new User\Id(10),
                 new User\IsBot(false),
                 new User\FirstName('first_name')
             ));
-
-        $command = new GetMeCommand($botApi);
-        $commandTester = new CommandTester($command);
 
         self::assertEquals(
             Command::SUCCESS,
@@ -36,11 +39,13 @@ class GetMeCommandTest extends TestCase
     public function testExitOnException(): void
     {
         $botApi = self::createMock(BotApi::class);
-        $botApi->method('getMe')
-            ->willThrowException(new JsonException());
-
         $command = new GetMeCommand($botApi);
         $commandTester = new CommandTester($command);
+
+        $botApi
+            ->expects(self::once())
+            ->method('getMe')
+            ->willThrowException(new JsonException());
 
         self::assertEquals(
             Command::FAILURE,

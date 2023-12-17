@@ -16,7 +16,7 @@ class GetMeCommand extends Command
 {
     public function __construct(
         private readonly BotApi $telegram,
-        string $name = 'telegram:get-me'
+        string                  $name = 'telegram:get-me'
     )
     {
         parent::__construct($name);
@@ -43,7 +43,7 @@ class GetMeCommand extends Command
                 sprintf('Is bot: %s', $user->isBot?->getValue() ? 'true' : 'false'),
                 sprintf('First name: %s', $user->firstName->getValue()),
                 sprintf('Username: %s', $user->username?->getValue()),
-                sprintf('Can join groups: %s', (string) $user->canJoinGroups?->getValue() ? 'true' : 'false'),
+                sprintf('Can join groups: %s', (string)$user->canJoinGroups?->getValue() ? 'true' : 'false'),
                 sprintf('Can read all group messages: %s', $user->canReadAllGroupMessages?->getValue() ? 'true' : 'false'),
                 sprintf('Supports inline queries: %s', $user->supportsInlineQueries?->getValue() ? 'true' : 'false'),
             ]);
