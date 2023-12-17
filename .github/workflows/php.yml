@@ -13,21 +13,25 @@ jobs:
     steps:
      - name: Checkout Code
        uses: actions/checkout@v4
+       working-directory: ./app
 
      - name: Install composer and dependencies
        uses: php-actions/composer@v6
+       working-directory: ./app
 
      - name: PHPUnit Tests
        uses: php-actions/phpunit@v3
+       working-directory: ./app
        env:
          XDEBUG_MODE: coverage
        with:
-         bootstrap: vendor/autoload.php
+         bootstrap: app/vendor/autoload.php
          php_extensions: xdebug
          args: --coverage-clover ./coverage.xml
 
      - name: Upload to Codecov
        uses: codecov/codecov-action@v2
+       working-directory: ./app
        with:
          token: ${{ secrets.CODECOV_TOKEN }}
          files: ./coverage.xml
