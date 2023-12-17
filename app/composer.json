@@ -7,11 +7,13 @@
         "php": ">=8.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "monolog/monolog": "^3.5",
         "symfony/console": "6.2.*",
         "symfony/dotenv": "6.2.*",
         "symfony/flex": "^2",
         "symfony/framework-bundle": "6.2.*",
         "symfony/http-client": "6.2.*",
+        "symfony/monolog-bundle": "^3.10",
         "symfony/runtime": "6.2.*",
         "symfony/yaml": "6.2.*"
     },

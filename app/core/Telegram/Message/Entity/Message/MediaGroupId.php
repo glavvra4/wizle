@@ -6,7 +6,6 @@ namespace Core\Telegram\Message\Entity\Message;
 
 use Core\Common\Entity\IntValueObject;
 
-/** Unique message identifier inside this chat */
-class Id extends IntValueObject
+class MediaGroupId extends IntValueObject
 {
 }
