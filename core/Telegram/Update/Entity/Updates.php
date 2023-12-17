@@ -11,17 +11,17 @@ class Updates implements UpdatesInterface
 {
     private int $position = 0;
 
-    /** @var array<UpdateInterface> */
+    /** @var array<Update> */
     private array $container = [];
 
     /**
-     * @param array<UpdateInterface> $entities
+     * @param array<Update> $entities
      */
     public function __construct(array $entities)
     {
         foreach ($entities as $entity) {
-            if (!$entity instanceof UpdateInterface) {
-                throw new InvalidArgumentException("Each element of \"entities\" array must be an instance of UpdateInterface");
+            if (!$entity instanceof Update) {
+                throw new InvalidArgumentException("Each element of \"entities\" array must be an instance of Update");
             }
 
             $this->container[] = $entity;
@@ -33,9 +33,9 @@ class Updates implements UpdatesInterface
     /**
      * @param mixed $offset
      *
-     * @return UpdateInterface|null
+     * @return Update|null
      */
-    public function offsetGet(mixed $offset): ?UpdateInterface
+    public function offsetGet(mixed $offset): ?Update
     {
         return ($this->offsetExists($offset))
             ? $this->container[$offset]
@@ -74,9 +74,9 @@ class Updates implements UpdatesInterface
     }
 
     /**
-     * @return UpdateInterface
+     * @return Update
      */
-    public function current(): UpdateInterface
+    public function current(): Update
     {
         return $this->container[$this->position];
     }
@@ -111,5 +111,13 @@ class Updates implements UpdatesInterface
     public function rewind(): void
     {
         $this->position = 0;
+    }
+
+    /**
+     * @return int
+     */
+    public function count(): int
+    {
+        return count($this->container);
     }
 }
