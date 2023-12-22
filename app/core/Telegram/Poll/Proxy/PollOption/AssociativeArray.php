@@ -7,7 +7,7 @@ namespace Core\Telegram\Poll\Proxy\PollOption;
 use Core\Telegram\Poll\Entity\PollOption;
 use JetBrains\PhpStorm\ArrayShape;
 
-readonly class AssociativeArray extends PollOption
+class AssociativeArray extends PollOption
 {
     public function __construct(
         #[ArrayShape([

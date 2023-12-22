@@ -7,7 +7,7 @@ namespace Core\Telegram\Location\Proxy\Location;
 use Core\Telegram\Location\Entity\Location;
 use JetBrains\PhpStorm\ArrayShape;
 
-readonly class AssociativeArray extends Location
+class AssociativeArray extends Location
 {
     public function __construct(
         #[ArrayShape([

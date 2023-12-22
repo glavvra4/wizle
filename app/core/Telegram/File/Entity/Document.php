@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Core\Telegram\File\Entity;
 
-readonly class Document extends AbstractFile implements DocumentInterface
+class Document extends AbstractFile implements DocumentInterface
 {
     /**
      * @param File\Id $fileId
@@ -17,10 +17,10 @@ readonly class Document extends AbstractFile implements DocumentInterface
     public function __construct(
         File\Id               $fileId,
         File\UniqueId         $fileUniqueId,
-        public ?PhotoSize     $thumbnail = null,
-        public ?File\Name     $fileName = null,
-        public ?File\MimeType $mimeType = null,
-        public ?File\Size     $fileSize = null
+        public readonly ?PhotoSize     $thumbnail = null,
+        public readonly ?File\Name     $fileName = null,
+        public readonly ?File\MimeType $mimeType = null,
+        public readonly ?File\Size     $fileSize = null
     )
     {
         parent::__construct(

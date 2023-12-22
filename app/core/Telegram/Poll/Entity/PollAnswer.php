@@ -6,7 +6,7 @@ namespace Core\Telegram\Poll\Entity;
 
 use Core\Telegram\User\Entity\User;
 
-readonly class PollAnswer implements PollAnswerInterface
+class PollAnswer implements PollAnswerInterface
 {
     /**
      * @param Poll\Id $pollId
@@ -14,9 +14,9 @@ readonly class PollAnswer implements PollAnswerInterface
      * @param PollOptionIds $optionIds
      */
     public function __construct(
-        public Poll\Id       $pollId,
-        public User          $user,
-        public PollOptionIds $optionIds
+        public readonly Poll\Id       $pollId,
+        public readonly User          $user,
+        public readonly PollOptionIds $optionIds
     )
     {
     }

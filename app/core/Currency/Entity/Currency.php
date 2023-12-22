@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Core\Currency\Entity;
 
 /** Currency data object */
-readonly class Currency implements CurrencyInterface
+class Currency implements CurrencyInterface
 {
     /**
      * @param Currency\Code $code
@@ -24,15 +24,15 @@ readonly class Currency implements CurrencyInterface
      * @throws Currency\Exception\InvalidThousandsSeparatorException
      */
     public function __construct(
-        public Currency\Code               $code,
-        public Currency\Title              $title,
-        public Currency\Symbol             $symbol,
-        public Currency\Native             $native,
-        public Currency\ThousandsSeparator $thousandsSeparator,
-        public Currency\DecimalSeparator   $decimalSeparator,
-        public Currency\SymbolLeft         $symbolLeft,
-        public Currency\SpaceBetween       $spaceBetween,
-        public Currency\Exponent           $exponent
+        public readonly Currency\Code               $code,
+        public readonly Currency\Title              $title,
+        public readonly Currency\Symbol             $symbol,
+        public readonly Currency\Native             $native,
+        public readonly Currency\ThousandsSeparator $thousandsSeparator,
+        public readonly Currency\DecimalSeparator   $decimalSeparator,
+        public readonly Currency\SymbolLeft         $symbolLeft,
+        public readonly Currency\SpaceBetween       $spaceBetween,
+        public readonly Currency\Exponent           $exponent
     )
     {
     }

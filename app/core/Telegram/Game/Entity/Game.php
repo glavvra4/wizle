@@ -11,7 +11,7 @@ use Core\Telegram\File\Entity\{
 use Core\Telegram\Message\Entity\MessageEntities;
 
 /** This object represents a game. Use BotFather to create and edit games, their short names will act as unique identifiers. */
-readonly class Game implements GameInterface
+class Game implements GameInterface
 {
     /**
      * @param Game\Title $title
@@ -22,12 +22,12 @@ readonly class Game implements GameInterface
      * @param Animation $animation
      */
     public function __construct(
-        public Game\Title $title,
-        public Game\Description $description,
-        public PhotoSizes $photo,
-        public Game\Text $text,
-        public MessageEntities $textEntities,
-        public Animation $animation
+        public readonly Game\Title $title,
+        public readonly Game\Description $description,
+        public readonly PhotoSizes $photo,
+        public readonly Game\Text $text,
+        public readonly MessageEntities $textEntities,
+        public readonly Animation $animation
     )
     {
     }

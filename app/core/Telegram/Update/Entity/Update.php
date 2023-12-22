@@ -8,7 +8,7 @@ use Core\Telegram\Message\Entity\Message;
 use Core\Telegram\Update\Entity\Update\Id;
 
 /** This object represents an incoming update. At most one of the optional parameters can be present in any given update. */
-readonly class Update implements UpdateInterface
+class Update implements UpdateInterface
 {
     /**
      * @param Id $id
@@ -18,11 +18,11 @@ readonly class Update implements UpdateInterface
      * @param Message|null $editedChannelPost
      */
     public function __construct(
-        public Update\Id         $id,
-        public ?Message $message = null,
-        public ?Message $editedMessage = null,
-        public ?Message $channelPost = null,
-        public ?Message $editedChannelPost = null,
+        public readonly Update\Id         $id,
+        public readonly ?Message $message = null,
+        public readonly ?Message $editedMessage = null,
+        public readonly ?Message $channelPost = null,
+        public readonly ?Message $editedChannelPost = null,
     )
     {
     }

@@ -9,7 +9,7 @@ use Core\Telegram\File\Entity\VideoNote;
 use Core\Telegram\File\Proxy\PhotoSize;
 use JetBrains\PhpStorm\ArrayShape;
 
-readonly class AssociativeArray extends VideoNote
+class AssociativeArray extends VideoNote
 {
     public function __construct(
         #[ArrayShape([

@@ -12,7 +12,7 @@ use Core\Telegram\Payments\Proxy\OrderInfo\AssociativeArray as OrderInfoAssociat
 use Core\Telegram\User\Proxy\User\AssociativeArray as UserAssociativeArrayProxy;
 use JetBrains\PhpStorm\ArrayShape;
 
-readonly class AssociativeArray extends PreCheckoutQuery
+class AssociativeArray extends PreCheckoutQuery
 {
     public function __construct(
         #[ArrayShape([

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Core\Telegram\Location\Entity;
 
-readonly class Location implements LocationInterface
+class Location implements LocationInterface
 {
     /**
      * @param Location\Longitude $longitude
@@ -15,12 +15,12 @@ readonly class Location implements LocationInterface
      * @param Location\ProximityAlertRadius|null $proximityAlertRadius
      */
     public function __construct(
-        public Location\Longitude             $longitude,
-        public Location\Latitude              $latitude,
-        public ?Location\HorizontalAccuracy   $horizontalAccuracy = null,
-        public ?Location\LivePeriod           $livePeriod = null,
-        public ?Location\Heading              $heading = null,
-        public ?Location\ProximityAlertRadius $proximityAlertRadius = null,
+        public readonly Location\Longitude             $longitude,
+        public readonly Location\Latitude              $latitude,
+        public readonly ?Location\HorizontalAccuracy   $horizontalAccuracy = null,
+        public readonly ?Location\LivePeriod           $livePeriod = null,
+        public readonly ?Location\Heading              $heading = null,
+        public readonly ?Location\ProximityAlertRadius $proximityAlertRadius = null,
     )
     {
     }

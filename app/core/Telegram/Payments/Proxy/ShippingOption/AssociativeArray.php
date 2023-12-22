@@ -8,7 +8,7 @@ use Core\Telegram\Payments\Entity\ShippingOption;
 use Core\Telegram\Payments\Proxy\LabeledPrices\IndexedArray as LabeledPricesIndexedArrayProxy;
 use JetBrains\PhpStorm\ArrayShape;
 
-readonly class AssociativeArray extends ShippingOption
+class AssociativeArray extends ShippingOption
 {
     public function __construct(
         #[ArrayShape([

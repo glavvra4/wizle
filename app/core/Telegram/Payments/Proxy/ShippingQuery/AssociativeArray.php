@@ -10,7 +10,7 @@ use Core\Telegram\Payments\Proxy\ShippingAddress\AssociativeArray as ShippingAdd
 use Core\Telegram\User\Proxy\User\AssociativeArray as UserAssociativeArrayProxy;
 use JetBrains\PhpStorm\ArrayShape;
 
-readonly class AssociativeArray extends ShippingQuery
+class AssociativeArray extends ShippingQuery
 {
     public function __construct(
         #[ArrayShape([

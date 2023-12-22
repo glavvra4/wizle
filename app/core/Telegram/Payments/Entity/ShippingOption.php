@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Core\Telegram\Payments\Entity;
 
 /** This object represents one shipping option. */
-readonly class ShippingOption implements ShippingOptionInterface
+class ShippingOption implements ShippingOptionInterface
 {
     /**
      * @param ShippingOption\Id $id
@@ -13,9 +13,9 @@ readonly class ShippingOption implements ShippingOptionInterface
      * @param LabeledPrices $prices
      */
     public function __construct(
-        public ShippingOption\Id    $id,
-        public ShippingOption\Title $title,
-        public LabeledPrices        $prices,
+        public readonly ShippingOption\Id    $id,
+        public readonly ShippingOption\Title $title,
+        public readonly LabeledPrices        $prices,
     )
     {
     }

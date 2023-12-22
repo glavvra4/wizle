@@ -10,7 +10,7 @@ use Core\Telegram\File\Proxy\PhotoSizes\IndexedArray as PhotoSizesIndexedArrayPr
 use Core\Telegram\Message\Proxy\MessageEntities\IndexedArray as MessageEntitiesIndexedArrayProxy;
 use Core\Telegram\File\Proxy\Animation\AssociativeArray as AnimationAssociativeArrayProxy;
 
-readonly class AssociativeArray extends Game
+class AssociativeArray extends Game
 {
     public function __construct(
         #[ArrayShape([

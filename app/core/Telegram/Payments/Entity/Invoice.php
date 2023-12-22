@@ -7,7 +7,7 @@ namespace Core\Telegram\Payments\Entity;
 use Core\Currency\Entity\Currency;
 
 /** This object contains basic information about an invoice. */
-readonly class Invoice implements InvoiceInterface
+class Invoice implements InvoiceInterface
 {
     /**
      * @param Invoice\Title $title
@@ -17,11 +17,11 @@ readonly class Invoice implements InvoiceInterface
      * @param Currency\Amount $totalAmount
      */
     public function __construct(
-        public Invoice\Title          $title,
-        public Invoice\Description    $description,
-        public Invoice\StartParameter $startParameter,
-        public Currency\Code          $currency,
-        public Currency\Amount        $totalAmount,
+        public readonly Invoice\Title          $title,
+        public readonly Invoice\Description    $description,
+        public readonly Invoice\StartParameter $startParameter,
+        public readonly Currency\Code          $currency,
+        public readonly Currency\Amount        $totalAmount,
     )
     {
     }

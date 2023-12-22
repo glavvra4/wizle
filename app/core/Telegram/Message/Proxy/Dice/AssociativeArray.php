@@ -7,7 +7,7 @@ namespace Core\Telegram\Message\Proxy\Dice;
 use Core\Telegram\Message\Entity\Dice;
 use JetBrains\PhpStorm\ArrayShape;
 
-readonly class AssociativeArray extends Dice
+class AssociativeArray extends Dice
 {
     public function __construct(
         #[ArrayShape([

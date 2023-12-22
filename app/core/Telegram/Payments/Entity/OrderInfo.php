@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Core\Telegram\Payments\Entity;
 
 /** This object represents information about an order. */
-readonly class OrderInfo implements OrderInfoInterface
+class OrderInfo implements OrderInfoInterface
 {
     /**
      * @param OrderInfo\Name|null $name
@@ -14,10 +14,10 @@ readonly class OrderInfo implements OrderInfoInterface
      * @param ShippingAddress|null $shippingAddress
      */
     public function __construct(
-        public ?OrderInfo\Name        $name = null,
-        public ?OrderInfo\PhoneNumber $phoneNumber = null,
-        public ?OrderInfo\Email       $email = null,
-        public ?ShippingAddress       $shippingAddress = null
+        public readonly ?OrderInfo\Name        $name = null,
+        public readonly ?OrderInfo\PhoneNumber $phoneNumber = null,
+        public readonly ?OrderInfo\Email       $email = null,
+        public readonly ?ShippingAddress       $shippingAddress = null
     )
     {
     }

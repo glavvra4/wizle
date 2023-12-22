@@ -7,7 +7,7 @@ namespace Core\Telegram\File\Proxy\File;
 use Core\Telegram\File\Entity\File;
 use JetBrains\PhpStorm\ArrayShape;
 
-readonly class AssociativeArray extends File
+class AssociativeArray extends File
 {
     public function __construct(
         #[ArrayShape([

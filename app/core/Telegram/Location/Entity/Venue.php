@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Core\Telegram\Location\Entity;
 
-readonly class Venue implements VenueInterface
+class Venue implements VenueInterface
 {
     /**
      * @param Location $location
@@ -16,13 +16,13 @@ readonly class Venue implements VenueInterface
      * @param Venue\GooglePlaceType|null $googlePlaceType
      */
     public function __construct(
-        public Location               $location,
-        public Venue\Title            $title,
-        public Venue\Address          $address,
-        public ?Venue\FoursquareId    $foursquareId = null,
-        public ?Venue\FoursquareType  $foursquareType = null,
-        public ?Venue\GooglePlaceId   $googlePlaceId = null,
-        public ?Venue\GooglePlaceType $googlePlaceType = null,
+        public readonly Location               $location,
+        public readonly Venue\Title            $title,
+        public readonly Venue\Address          $address,
+        public readonly ?Venue\FoursquareId    $foursquareId = null,
+        public readonly ?Venue\FoursquareType  $foursquareType = null,
+        public readonly ?Venue\GooglePlaceId   $googlePlaceId = null,
+        public readonly ?Venue\GooglePlaceType $googlePlaceType = null,
     )
     {
     }

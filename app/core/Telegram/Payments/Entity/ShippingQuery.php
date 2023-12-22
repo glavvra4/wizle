@@ -7,7 +7,7 @@ namespace Core\Telegram\Payments\Entity;
 use Core\Telegram\User\Entity\User;
 
 /** This object contains information about an incoming shipping query. */
-readonly class ShippingQuery implements ShippingQueryInterface
+class ShippingQuery implements ShippingQueryInterface
 {
     /**
      * @param ShippingQuery\Id $id
@@ -16,10 +16,10 @@ readonly class ShippingQuery implements ShippingQueryInterface
      * @param ShippingAddress $shippingAddress
      */
     public function __construct(
-        public ShippingQuery\Id $id,
-        public User             $from,
-        public Invoice\Payload  $invoicePayload,
-        public ShippingAddress  $shippingAddress
+        public readonly ShippingQuery\Id $id,
+        public readonly User             $from,
+        public readonly Invoice\Payload  $invoicePayload,
+        public readonly ShippingAddress  $shippingAddress
     )
     {
     }

@@ -8,7 +8,7 @@ use Core\Language\Entity\Language;
 use Core\Telegram\User\Entity\User;
 use JetBrains\PhpStorm\ArrayShape;
 
-readonly class AssociativeArray extends User
+class AssociativeArray extends User
 {
     public function __construct(
         #[ArrayShape([

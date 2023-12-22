@@ -8,7 +8,7 @@ use Core\Telegram\File\Entity\File;
 use Core\Telegram\File\Entity\PhotoSize;
 use JetBrains\PhpStorm\ArrayShape;
 
-readonly class AssociativeArray extends PhotoSize
+class AssociativeArray extends PhotoSize
 {
     public function __construct(
         #[ArrayShape([

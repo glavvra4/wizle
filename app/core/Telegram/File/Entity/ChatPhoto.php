@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Core\Telegram\File\Entity;
 
-readonly class ChatPhoto implements ChatPhotoInterface
+class ChatPhoto implements ChatPhotoInterface
 {
     public ChatPhoto\SmallFile $smallFile;
     public ChatPhoto\BigFile $bigFile;

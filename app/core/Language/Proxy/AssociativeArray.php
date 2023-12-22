@@ -7,7 +7,7 @@ namespace Core\Language\Proxy;
 use Core\Language\Entity\Language;
 use JetBrains\PhpStorm\ArrayShape;
 
-readonly class AssociativeArray extends Language
+class AssociativeArray extends Language
 {
     public function __construct(
         #[ArrayShape([

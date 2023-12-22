@@ -7,7 +7,7 @@ namespace Core\Telegram\Message\Entity;
 use Core\Telegram\User\Entity\User;
 
 /** This object represents a phone contact. */
-readonly class Contact implements ContactInterface
+class Contact implements ContactInterface
 {
     /**
      * @param Contact\PhoneNumber $phoneNumber
@@ -17,11 +17,11 @@ readonly class Contact implements ContactInterface
      * @param Contact\VCard|null $vCard
      */
     public function __construct(
-        public Contact\PhoneNumber $phoneNumber,
-        public Contact\FirstName $firstName,
-        public ?Contact\LastName $lastName = null,
-        public ?User\Id $userId = null,
-        public ?Contact\VCard $vCard = null,
+        public readonly Contact\PhoneNumber $phoneNumber,
+        public readonly Contact\FirstName $firstName,
+        public readonly ?Contact\LastName $lastName = null,
+        public readonly ?User\Id $userId = null,
+        public readonly ?Contact\VCard $vCard = null,
     )
     {
     }

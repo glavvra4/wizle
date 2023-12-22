@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Core\Telegram\Chat\Entity;
 
-readonly class ChatPermissions implements ChatPermissionsInterface
+class ChatPermissions implements ChatPermissionsInterface
 {
     /**
      * @param ChatPermissions\CanSendMessages|null $canSendMessages
@@ -23,20 +23,20 @@ readonly class ChatPermissions implements ChatPermissionsInterface
      * @param ChatPermissions\CanManageTopics|null $canManageTopics
      */
     public function __construct(
-        public ?ChatPermissions\CanSendMessages       $canSendMessages = null,
-        public ?ChatPermissions\CanSendAudios         $canSendAudios = null,
-        public ?ChatPermissions\CanSendDocuments      $canSendDocuments = null,
-        public ?ChatPermissions\CanSendPhotos         $canSendPhotos = null,
-        public ?ChatPermissions\CanSendVideos         $canSendVideos = null,
-        public ?ChatPermissions\CanSendVideoNotes     $canSendVideoNotes = null,
-        public ?ChatPermissions\CanSendVoiceNotes     $canSendVoiceNotes = null,
-        public ?ChatPermissions\CanSendPolls          $canSendPolls = null,
-        public ?ChatPermissions\CanSendOtherMessages  $canSendOtherMessages = null,
-        public ?ChatPermissions\CanAddWebPagePreviews $canAddWebPagePreviews = null,
-        public ?ChatPermissions\CanChangeInfo         $canChangeInfo = null,
-        public ?ChatPermissions\CanInviteUsers        $canInviteUsers = null,
-        public ?ChatPermissions\CanPinMessages        $canPinMessages = null,
-        public ?ChatPermissions\CanManageTopics       $canManageTopics = null,
+        public readonly ?ChatPermissions\CanSendMessages       $canSendMessages = null,
+        public readonly ?ChatPermissions\CanSendAudios         $canSendAudios = null,
+        public readonly ?ChatPermissions\CanSendDocuments      $canSendDocuments = null,
+        public readonly ?ChatPermissions\CanSendPhotos         $canSendPhotos = null,
+        public readonly ?ChatPermissions\CanSendVideos         $canSendVideos = null,
+        public readonly ?ChatPermissions\CanSendVideoNotes     $canSendVideoNotes = null,
+        public readonly ?ChatPermissions\CanSendVoiceNotes     $canSendVoiceNotes = null,
+        public readonly ?ChatPermissions\CanSendPolls          $canSendPolls = null,
+        public readonly ?ChatPermissions\CanSendOtherMessages  $canSendOtherMessages = null,
+        public readonly ?ChatPermissions\CanAddWebPagePreviews $canAddWebPagePreviews = null,
+        public readonly ?ChatPermissions\CanChangeInfo         $canChangeInfo = null,
+        public readonly ?ChatPermissions\CanInviteUsers        $canInviteUsers = null,
+        public readonly ?ChatPermissions\CanPinMessages        $canPinMessages = null,
+        public readonly ?ChatPermissions\CanManageTopics       $canManageTopics = null,
     )
     {
     }

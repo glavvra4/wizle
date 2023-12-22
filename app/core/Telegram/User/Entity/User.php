@@ -7,7 +7,7 @@ namespace Core\Telegram\User\Entity;
 use Core\Language\Entity\Language;
 
 /** Represents Telegram user or bot */
-readonly class User implements UserInterface
+class User implements UserInterface
 {
     /**
      * @param User\Id $id
@@ -23,17 +23,17 @@ readonly class User implements UserInterface
      * @param User\SupportsInlineQueries|null $supportsInlineQueries
      */
     public function __construct(
-        public User\Id                       $id,
-        public User\IsBot                    $isBot,
-        public User\FirstName                $firstName,
-        public ?User\LastName                $lastName = null,
-        public ?User\Username                $username = null,
-        public ?Language\Subtag              $languageCode = null,
-        public ?User\IsPremium               $isPremium = null,
-        public ?User\AddedToAttachmentMenu   $addedToAttachmentMenu = null,
-        public ?User\CanJoinGroups           $canJoinGroups = null,
-        public ?User\CanReadAllGroupMessages $canReadAllGroupMessages = null,
-        public ?User\SupportsInlineQueries   $supportsInlineQueries = null
+        public readonly User\Id                       $id,
+        public readonly User\IsBot                    $isBot,
+        public readonly User\FirstName                $firstName,
+        public readonly ?User\LastName                $lastName = null,
+        public readonly ?User\Username                $username = null,
+        public readonly ?Language\Subtag              $languageCode = null,
+        public readonly ?User\IsPremium               $isPremium = null,
+        public readonly ?User\AddedToAttachmentMenu   $addedToAttachmentMenu = null,
+        public readonly ?User\CanJoinGroups           $canJoinGroups = null,
+        public readonly ?User\CanReadAllGroupMessages $canReadAllGroupMessages = null,
+        public readonly ?User\SupportsInlineQueries   $supportsInlineQueries = null
     )
     {
     }

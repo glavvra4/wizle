@@ -7,7 +7,7 @@ namespace Core\Telegram\Message\Entity;
 use Core\Telegram\Sticker\Entity\Sticker\CustomEmojiId;
 use Core\Telegram\User\Entity\User;
 
-readonly class MessageEntity implements MessageEntityInterface
+class MessageEntity implements MessageEntityInterface
 {
     /**
      * @param MessageEntity\Type $type
@@ -19,13 +19,13 @@ readonly class MessageEntity implements MessageEntityInterface
      * @param CustomEmojiId|null $customEmojiId
      */
     public function __construct(
-        public MessageEntity\Type      $type,
-        public MessageEntity\Offset    $offset,
-        public MessageEntity\Length    $length,
-        public ?MessageEntity\Url      $url = null,
-        public ?User                   $user = null,
-        public ?MessageEntity\Language $language = null,
-        public ?CustomEmojiId          $customEmojiId = null,
+        public readonly MessageEntity\Type      $type,
+        public readonly MessageEntity\Offset    $offset,
+        public readonly MessageEntity\Length    $length,
+        public readonly ?MessageEntity\Url      $url = null,
+        public readonly ?User                   $user = null,
+        public readonly ?MessageEntity\Language $language = null,
+        public readonly ?CustomEmojiId          $customEmojiId = null,
     )
     {
     }

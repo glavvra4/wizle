@@ -9,7 +9,7 @@ use Core\Telegram\Sticker\Entity\Sticker\CustomEmojiId;
 use Core\Telegram\User\Proxy\User\AssociativeArray as UserAssociativeArrayProxy;
 use JetBrains\PhpStorm\ArrayShape;
 
-readonly class AssociativeArray extends MessageEntity
+class AssociativeArray extends MessageEntity
 {
     public function __construct(
         #[ArrayShape([

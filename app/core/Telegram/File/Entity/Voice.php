@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Core\Telegram\File\Entity;
 
-readonly class Voice extends AbstractFile implements VoiceInterface
+class Voice extends AbstractFile implements VoiceInterface
 {
     /**
      * @param File\Id $fileId
@@ -16,9 +16,9 @@ readonly class Voice extends AbstractFile implements VoiceInterface
     public function __construct(
         File\Id               $fileId,
         File\UniqueId         $fileUniqueId,
-        public File\Duration  $duration,
-        public ?File\MimeType $mimeType = null,
-        public ?File\Size     $fileSize = null,
+        public readonly File\Duration  $duration,
+        public readonly ?File\MimeType $mimeType = null,
+        public readonly ?File\Size     $fileSize = null,
     )
     {
         parent::__construct(

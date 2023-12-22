@@ -7,7 +7,7 @@ namespace Core\Telegram\Sticker\Proxy\MaskPosition;
 use Core\Telegram\Sticker\Entity\MaskPosition;
 use JetBrains\PhpStorm\ArrayShape;
 
-readonly class AssociativeArray extends MaskPosition
+class AssociativeArray extends MaskPosition
 {
     public function __construct(
         #[ArrayShape([

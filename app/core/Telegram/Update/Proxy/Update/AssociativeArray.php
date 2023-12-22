@@ -8,7 +8,7 @@ use Core\Telegram\Message\Proxy\Message\AssociativeArray as MessageAssociativeAr
 use Core\Telegram\Update\Entity\Update;
 use JetBrains\PhpStorm\ArrayShape;
 
-readonly class AssociativeArray extends Update
+class AssociativeArray extends Update
 {
 
     public function __construct(

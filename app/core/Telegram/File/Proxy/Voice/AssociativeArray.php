@@ -8,7 +8,7 @@ use Core\Telegram\File\Entity\File;
 use Core\Telegram\File\Entity\Voice;
 use JetBrains\PhpStorm\ArrayShape;
 
-readonly class AssociativeArray extends Voice
+class AssociativeArray extends Voice
 {
     public function __construct(
         #[ArrayShape([

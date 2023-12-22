@@ -7,7 +7,7 @@ namespace Core\Telegram\Chat\Proxy\ChatPermissions;
 use Core\Telegram\Chat\Entity\ChatPermissions;
 use JetBrains\PhpStorm\ArrayShape;
 
-readonly class AssociativeArray extends ChatPermissions
+class AssociativeArray extends ChatPermissions
 {
     public function __construct(
         #[ArrayShape([

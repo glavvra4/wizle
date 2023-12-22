@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Core\Telegram\File\Entity;
 
-readonly class PhotoSize extends AbstractFile implements PhotoSizeInterface
+class PhotoSize extends AbstractFile implements PhotoSizeInterface
 {
     /**
      * @param File\Id $fileId
@@ -16,9 +16,9 @@ readonly class PhotoSize extends AbstractFile implements PhotoSizeInterface
     public function __construct(
         File\Id               $fileId,
         File\UniqueId         $fileUniqueId,
-        public File\Dimension $width,
-        public File\Dimension $height,
-        public ?File\Size     $fileSize = null
+        readonly public File\Dimension $width,
+        readonly public File\Dimension $height,
+        readonly public ?File\Size     $fileSize = null
     )
     {
         parent::__construct(

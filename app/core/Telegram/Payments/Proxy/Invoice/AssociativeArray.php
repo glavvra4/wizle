@@ -8,7 +8,7 @@ use Core\Currency\Entity\Currency;
 use Core\Telegram\Payments\Entity\Invoice;
 use JetBrains\PhpStorm\ArrayShape;
 
-readonly class AssociativeArray extends Invoice
+class AssociativeArray extends Invoice
 {
     public function __construct(
         #[ArrayShape([

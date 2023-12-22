@@ -10,7 +10,7 @@ use Core\Telegram\Poll\Entity\PollOption;
 use Core\Telegram\Poll\Proxy\PollOptions\IndexedArray as PollOptionsIndexedArrayProxy;
 use JetBrains\PhpStorm\ArrayShape;
 
-readonly class AssociativeArray extends Poll
+class AssociativeArray extends Poll
 {
     public function __construct(
         #[ArrayShape([

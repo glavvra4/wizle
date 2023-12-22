@@ -14,7 +14,7 @@ use Core\Telegram\Sticker\Entity\{
 };
 use JetBrains\PhpStorm\ArrayShape;
 
-readonly class AssociativeArray extends Sticker
+class AssociativeArray extends Sticker
 {
     public function __construct(
         #[ArrayShape([

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Core\Telegram\Payments\Entity;
 
 /** This object represents a shipping address. */
-readonly class ShippingAddress implements ShippingAddressInterface
+class ShippingAddress implements ShippingAddressInterface
 {
     /**
      * @param ShippingAddress\CountryCode $countryCode
@@ -16,12 +16,12 @@ readonly class ShippingAddress implements ShippingAddressInterface
      * @param ShippingAddress\PostCode $postCode
      */
     public function __construct(
-        public ShippingAddress\CountryCode $countryCode,
-        public ShippingAddress\State       $state,
-        public ShippingAddress\City        $city,
-        public ShippingAddress\StreetLine1 $streetLine1,
-        public ShippingAddress\StreetLine2 $streetLine2,
-        public ShippingAddress\PostCode    $postCode,
+        public readonly ShippingAddress\CountryCode $countryCode,
+        public readonly ShippingAddress\State       $state,
+        public readonly ShippingAddress\City        $city,
+        public readonly ShippingAddress\StreetLine1 $streetLine1,
+        public readonly ShippingAddress\StreetLine2 $streetLine2,
+        public readonly ShippingAddress\PostCode    $postCode,
     )
     {
     }

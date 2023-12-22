@@ -8,7 +8,7 @@ use Core\Telegram\Message\Entity\Contact;
 use Core\Telegram\User\Entity\User;
 use JetBrains\PhpStorm\ArrayShape;
 
-readonly class AssociativeArray extends Contact
+class AssociativeArray extends Contact
 {
     public function __construct(
         #[ArrayShape([

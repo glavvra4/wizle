@@ -8,7 +8,7 @@ use Core\Currency\Entity\Currency;
 use Core\Telegram\User\Entity\User;
 
 /** This object contains information about an incoming pre-checkout query. */
-readonly class PreCheckoutQuery implements ShippingQueryInterface
+class PreCheckoutQuery implements ShippingQueryInterface
 {
     /**
      * @param PreCheckoutQuery\Id $id
@@ -20,13 +20,13 @@ readonly class PreCheckoutQuery implements ShippingQueryInterface
      * @param OrderInfo|null $orderInfo
      */
     public function __construct(
-        public PreCheckoutQuery\Id $id,
-        public User                $from,
-        public Currency\Code       $currency,
-        public Currency\Amount     $totalAmount,
-        public Invoice\Payload     $invoicePayload,
-        public ?ShippingOption\Id  $shippingOptionId = null,
-        public ?OrderInfo          $orderInfo = null,
+        public readonly PreCheckoutQuery\Id $id,
+        public readonly User                $from,
+        public readonly Currency\Code       $currency,
+        public readonly Currency\Amount     $totalAmount,
+        public readonly Invoice\Payload     $invoicePayload,
+        public readonly ?ShippingOption\Id  $shippingOptionId = null,
+        public readonly ?OrderInfo          $orderInfo = null,
     )
     {
     }

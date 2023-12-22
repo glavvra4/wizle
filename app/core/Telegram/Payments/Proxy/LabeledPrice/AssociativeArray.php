@@ -8,7 +8,7 @@ use Core\Currency\Entity\Currency;
 use Core\Telegram\Payments\Entity\LabeledPrice;
 use JetBrains\PhpStorm\ArrayShape;
 
-readonly class AssociativeArray extends LabeledPrice
+class AssociativeArray extends LabeledPrice
 {
     public function __construct(
         #[ArrayShape([

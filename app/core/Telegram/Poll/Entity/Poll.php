@@ -6,7 +6,7 @@ namespace Core\Telegram\Poll\Entity;
 
 use Core\Telegram\Message\Entity\MessageEntities;
 
-readonly class Poll implements PollInterface
+class Poll implements PollInterface
 {
     /**
      * @param Poll\Id $id
@@ -24,19 +24,19 @@ readonly class Poll implements PollInterface
      * @param Poll\Close|null $closeDate
      */
     public function __construct(
-        public Poll\Id                    $id,
-        public Poll\Question              $question,
-        public PollOptions                $options,
-        public Poll\TotalVoterCount       $totalVoterCount,
-        public Poll\IsClosed              $isClosed,
-        public Poll\IsAnonymous           $isAnonymous,
-        public Poll\Type                  $type,
-        public Poll\AllowsMultipleAnswers $allowsMultipleAnswers,
-        public ?PollOption\Id             $correctOptionId = null,
-        public ?Poll\Explanation          $explanation = null,
-        public ?MessageEntities           $explanationEntities = null,
-        public ?Poll\OpenPeriod           $openPeriod = null,
-        public ?Poll\Close                $closeDate = null,
+        public readonly Poll\Id                    $id,
+        public readonly Poll\Question              $question,
+        public readonly PollOptions                $options,
+        public readonly Poll\TotalVoterCount       $totalVoterCount,
+        public readonly Poll\IsClosed              $isClosed,
+        public readonly Poll\IsAnonymous           $isAnonymous,
+        public readonly Poll\Type                  $type,
+        public readonly Poll\AllowsMultipleAnswers $allowsMultipleAnswers,
+        public readonly ?PollOption\Id             $correctOptionId = null,
+        public readonly ?Poll\Explanation          $explanation = null,
+        public readonly ?MessageEntities           $explanationEntities = null,
+        public readonly ?Poll\OpenPeriod           $openPeriod = null,
+        public readonly ?Poll\Close                $closeDate = null,
     )
     {
     }

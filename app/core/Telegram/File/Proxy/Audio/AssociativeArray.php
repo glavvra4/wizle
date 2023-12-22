@@ -9,7 +9,7 @@ use Core\Telegram\File\Entity\File;
 use Core\Telegram\File\Proxy\PhotoSize;
 use JetBrains\PhpStorm\ArrayShape;
 
-readonly class AssociativeArray extends Audio
+class AssociativeArray extends Audio
 {
     public function __construct(
         #[ArrayShape([

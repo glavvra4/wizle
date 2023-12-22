@@ -8,7 +8,7 @@ use Core\Telegram\Location\Entity\Venue;
 use Core\Telegram\Location\Proxy\Location\AssociativeArray as LocationAssociativeArrayProxy;
 use JetBrains\PhpStorm\ArrayShape;
 
-readonly class AssociativeArray extends Venue
+class AssociativeArray extends Venue
 {
     public function __construct(
         #[ArrayShape([

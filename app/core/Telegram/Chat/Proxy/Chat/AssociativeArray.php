@@ -14,7 +14,7 @@ use Core\Telegram\User\Entity\User;
 use Core\Telegram\User\Proxy\Usernames\IndexedArray as ChatUsernamesIndexedArrayProxy;
 use JetBrains\PhpStorm\ArrayShape;
 
-readonly class AssociativeArray extends Chat
+class AssociativeArray extends Chat
 {
     public function __construct(
         #[ArrayShape([

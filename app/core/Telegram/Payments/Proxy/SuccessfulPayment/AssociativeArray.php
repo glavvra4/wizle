@@ -11,7 +11,7 @@ use Core\Telegram\Payments\Entity\SuccessfulPayment;
 use Core\Telegram\Payments\Proxy\OrderInfo\AssociativeArray as OrderInfoAssociativeArrayProxy;
 use JetBrains\PhpStorm\ArrayShape;
 
-readonly class AssociativeArray extends SuccessfulPayment
+class AssociativeArray extends SuccessfulPayment
 {
     public function __construct(
         #[ArrayShape([

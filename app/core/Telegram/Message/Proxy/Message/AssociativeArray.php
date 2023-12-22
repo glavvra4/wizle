@@ -11,7 +11,7 @@ use Core\Telegram\User\Proxy\User\AssociativeArray as UserAssociativeArrayProxy;
 use Core\Telegram\Message\Entity\Message;
 use JetBrains\PhpStorm\ArrayShape;
 
-readonly class AssociativeArray extends Message
+class AssociativeArray extends Message
 {
     public function __construct(
         #[ArrayShape([

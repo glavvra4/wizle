@@ -7,7 +7,7 @@ namespace Core\Telegram\Sticker\Entity;
 use Core\Telegram\File\Entity\{AbstractFile, File, PhotoSize};
 use Core\Telegram\Sticker\Entity\StickerSet\Name;
 
-readonly class Sticker extends AbstractFile implements StickerInterface
+class Sticker extends AbstractFile implements StickerInterface
 {
     /**
      * @param File\Id $fileId
@@ -29,19 +29,19 @@ readonly class Sticker extends AbstractFile implements StickerInterface
     public function __construct(
         File\Id                         $fileId,
         File\UniqueId                   $fileUniqueId,
-        public Sticker\Type             $type,
-        public File\Dimension           $width,
-        public File\Dimension           $height,
-        public Sticker\IsAnimated       $isAnimated,
-        public Sticker\IsVideo          $isVideo,
-        public ?PhotoSize               $thumbnail = null,
-        public ?Sticker\Emoji           $emoji = null,
-        public ?StickerSet\Name         $setName = null,
-        public ?File                    $premiumAnimation = null,
-        public ?MaskPosition            $maskPosition = null,
-        public ?Sticker\CustomEmojiId   $customEmojiId = null,
-        public ?Sticker\NeedsRepainting $needsRepainting = null,
-        public ?File\Size               $fileSize = null,
+        public readonly Sticker\Type             $type,
+        public readonly File\Dimension           $width,
+        public readonly File\Dimension           $height,
+        public readonly Sticker\IsAnimated       $isAnimated,
+        public readonly Sticker\IsVideo          $isVideo,
+        public readonly ?PhotoSize               $thumbnail = null,
+        public readonly ?Sticker\Emoji           $emoji = null,
+        public readonly ?StickerSet\Name         $setName = null,
+        public readonly ?File                    $premiumAnimation = null,
+        public readonly ?MaskPosition            $maskPosition = null,
+        public readonly ?Sticker\CustomEmojiId   $customEmojiId = null,
+        public readonly ?Sticker\NeedsRepainting $needsRepainting = null,
+        public readonly ?File\Size               $fileSize = null,
     )
     {
         parent::__construct(

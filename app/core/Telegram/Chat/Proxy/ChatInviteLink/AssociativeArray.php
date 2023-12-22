@@ -8,7 +8,7 @@ use Core\Telegram\Chat\Entity\ChatInviteLink;
 use Core\Telegram\User\Proxy\User\AssociativeArray as UserAssociativeArrayProxy;
 use JetBrains\PhpStorm\ArrayShape;
 
-readonly class AssociativeArray extends ChatInviteLink
+class AssociativeArray extends ChatInviteLink
 {
     public function __construct(
         #[ArrayShape([

@@ -7,7 +7,7 @@ namespace Core\Telegram\Payments\Entity;
 use Core\Currency\Entity\Currency;
 
 /** This object contains basic information about a successful payment. */
-readonly class SuccessfulPayment implements SuccessfulPaymentInterface
+class SuccessfulPayment implements SuccessfulPaymentInterface
 {
     /**
      * @param Currency\Code $currency
@@ -19,13 +19,13 @@ readonly class SuccessfulPayment implements SuccessfulPaymentInterface
      * @param OrderInfo|null $orderInfo
      */
     public function __construct(
-        public Currency\Code                             $currency,
-        public Currency\Amount                           $totalAmount,
-        public Invoice\Payload                           $invoicePayload,
-        public SuccessfulPayment\TelegramPaymentChargeId $telegramPaymentChargeId,
-        public SuccessfulPayment\ProviderPaymentChargeId $providerPaymentChargeId,
-        public ?ShippingOption\Id                        $shippingOptionId = null,
-        public ?OrderInfo                                $orderInfo = null,
+        public readonly Currency\Code                             $currency,
+        public readonly Currency\Amount                           $totalAmount,
+        public readonly Invoice\Payload                           $invoicePayload,
+        public readonly SuccessfulPayment\TelegramPaymentChargeId $telegramPaymentChargeId,
+        public readonly SuccessfulPayment\ProviderPaymentChargeId $providerPaymentChargeId,
+        public readonly ?ShippingOption\Id                        $shippingOptionId = null,
+        public readonly ?OrderInfo                                $orderInfo = null,
     )
     {
     }

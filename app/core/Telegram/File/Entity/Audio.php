@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Core\Telegram\File\Entity;
 
-readonly class Audio extends AbstractFile implements AudioInterface
+class Audio extends AbstractFile implements AudioInterface
 {
     /**
      * @param File\Id $fileId
@@ -20,13 +20,13 @@ readonly class Audio extends AbstractFile implements AudioInterface
     public function __construct(
         File\Id                 $fileId,
         File\UniqueId           $fileUniqueId,
-        public File\Duration    $duration,
-        public ?Audio\Performer $performer = null,
-        public ?Audio\Title     $title = null,
-        public ?File\Name       $fileName = null,
-        public ?File\MimeType   $mimeType = null,
-        public ?File\Size       $fileSize = null,
-        public ?PhotoSize       $thumbnail = null,
+        public readonly File\Duration    $duration,
+        public readonly ?Audio\Performer $performer = null,
+        public readonly ?Audio\Title     $title = null,
+        public readonly ?File\Name       $fileName = null,
+        public readonly ?File\MimeType   $mimeType = null,
+        public readonly ?File\Size       $fileSize = null,
+        public readonly ?PhotoSize       $thumbnail = null,
     )
     {
         parent::__construct(

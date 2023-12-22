@@ -7,7 +7,7 @@ namespace Core\Currency\Proxy\Currency;
 use Core\Currency\Entity\Currency;
 use JetBrains\PhpStorm\ArrayShape;
 
-readonly class AssociativeArray extends Currency
+class AssociativeArray extends Currency
 {
     public function __construct(
         #[ArrayShape([

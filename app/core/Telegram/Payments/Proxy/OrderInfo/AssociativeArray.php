@@ -8,7 +8,7 @@ use Core\Telegram\Payments\Entity\OrderInfo;
 use Core\Telegram\Payments\Proxy\ShippingAddress\AssociativeArray as ShippingAddressAssociativeArrayProxy;
 use JetBrains\PhpStorm\ArrayShape;
 
-readonly class AssociativeArray extends OrderInfo
+class AssociativeArray extends OrderInfo
 {
     public function __construct(
         #[ArrayShape([

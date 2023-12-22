@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Core\Telegram\File\Entity;
 
-readonly class VideoNote extends AbstractFile implements VideoNoteInterface
+class VideoNote extends AbstractFile implements VideoNoteInterface
 {
     /**
      * @param File\Id $fileId
@@ -17,10 +17,10 @@ readonly class VideoNote extends AbstractFile implements VideoNoteInterface
     public function __construct(
         File\Id               $fileId,
         File\UniqueId         $fileUniqueId,
-        public File\Dimension $length,
-        public File\Duration  $duration,
-        public ?PhotoSize     $thumbnail = null,
-        public ?File\Size     $fileSize = null,
+        public readonly File\Dimension $length,
+        public readonly File\Duration  $duration,
+        public readonly ?PhotoSize     $thumbnail = null,
+        public readonly ?File\Size     $fileSize = null,
     )
     {
         parent::__construct(

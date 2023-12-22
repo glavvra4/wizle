@@ -6,7 +6,7 @@ namespace Core\Telegram\Chat\Entity;
 
 use Core\Telegram\User\Entity\User;
 
-readonly class ChatInviteLink implements ChatInviteLinkInterface
+class ChatInviteLink implements ChatInviteLinkInterface
 {
     /**
      * @param ChatInviteLink\InviteLink $inviteLink
@@ -20,15 +20,15 @@ readonly class ChatInviteLink implements ChatInviteLinkInterface
      * @param ChatInviteLink\PendingJoinRequestCount|null $pendingJoinRequestCount
      */
     public function __construct(
-        public ChatInviteLink\InviteLink               $inviteLink,
-        public User                                    $creator,
-        public ChatInviteLink\CreatesJoinRequest       $createsJoinRequest,
-        public ChatInviteLink\IsPrimary                $isPrimary,
-        public ChatInviteLink\IsRevoked                $isRevoked,
-        public ?ChatInviteLink\Name                    $name = null,
-        public ?ChatInviteLink\ExpireDate              $expireDate = null,
-        public ?ChatInviteLink\MemberLimit             $memberLimit = null,
-        public ?ChatInviteLink\PendingJoinRequestCount $pendingJoinRequestCount = null
+        public readonly ChatInviteLink\InviteLink               $inviteLink,
+        public readonly User                                    $creator,
+        public readonly ChatInviteLink\CreatesJoinRequest       $createsJoinRequest,
+        public readonly ChatInviteLink\IsPrimary                $isPrimary,
+        public readonly ChatInviteLink\IsRevoked                $isRevoked,
+        public readonly ?ChatInviteLink\Name                    $name = null,
+        public readonly ?ChatInviteLink\ExpireDate              $expireDate = null,
+        public readonly ?ChatInviteLink\MemberLimit             $memberLimit = null,
+        public readonly ?ChatInviteLink\PendingJoinRequestCount $pendingJoinRequestCount = null
     )
     {
     }

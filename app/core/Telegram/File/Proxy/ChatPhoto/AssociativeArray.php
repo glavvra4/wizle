@@ -8,7 +8,7 @@ use Core\Telegram\File\Entity\ChatPhoto;
 use Core\Telegram\File\Entity\File;
 use JetBrains\PhpStorm\ArrayShape;
 
-readonly class AssociativeArray extends ChatPhoto
+class AssociativeArray extends ChatPhoto
 {
     public function __construct(
         #[ArrayShape([
