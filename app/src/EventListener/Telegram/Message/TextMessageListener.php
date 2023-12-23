@@ -57,6 +57,7 @@ HTML,
         $this->telegram->sendAdminMessage(
             text: new Message\Text(sprintf(<<<HTML
 Новый вопрос!
+
 %s
 HTML,
                 $message->text->getValue()))
@@ -66,7 +67,8 @@ HTML,
             chatId: $message->chat->id,
             text: new Message\Text(sprintf(<<<HTML
 Ваш вопрос успешно отправлен!
-Осталось вопросов: %d.
+
+Осталось вопросов: %d
 HTML, $limit->getRemainingTokens()))
         );
     }
