@@ -1,6 +1,10 @@
 framework:
     rate_limiter:
-        anonymous_messages:
+        telegram_anonymous_messages:
             policy: 'fixed_window'
             limit: 3
             interval: '1 day'
+        telegram_media_group:
+            policy: 'sliding_window'
+            limit: 1
+            interval: '30 seconds'

@@ -54,23 +54,26 @@ services:
 
     App\EventListener\Telegram\Message\TextMessageListener:
         class: App\EventListener\Telegram\Message\TextMessageListener
-        arguments:
-            $anonymousMessagesLimiter: '@limiter.anonymous_messages'
         tags:
             - { name: kernel.event_listener, event: app.telegram.message, method: onMessage, priority: 0 }
 
     App\EventListener\Telegram\Message\HelpCommandMessageListener:
         class: App\EventListener\Telegram\Message\HelpCommandMessageListener
         tags:
-            - { name: kernel.event_listener, event: app.telegram.message, method: onMessage, priority: 999 }
+            - { name: kernel.event_listener, event: app.telegram.message, method: onMessage, priority: 1 }
 
     App\EventListener\Telegram\Message\MeCommandMessageListener:
         class: App\EventListener\Telegram\Message\MeCommandMessageListener
         tags:
-            - { name: kernel.event_listener, event: app.telegram.message, method: onMessage, priority: 999 }
+            - { name: kernel.event_listener, event: app.telegram.message, method: onMessage, priority: 1 }
 
     App\EventListener\Telegram\Message\StartCommandMessageListener:
         class: App\EventListener\Telegram\Message\StartCommandMessageListener
+        tags:
+            - { name: kernel.event_listener, event: app.telegram.message, method: onMessage, priority: 1 }
+
+    App\EventListener\Telegram\Message\MediaGroupMessageListener:
+        class: App\EventListener\Telegram\Message\MediaGroupMessageListener
         tags:
             - { name: kernel.event_listener, event: app.telegram.message, method: onMessage, priority: 999 }
 

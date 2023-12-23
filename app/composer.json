@@ -20,6 +20,7 @@
         "symfony/monolog-bundle": "^3.10",
         "symfony/rate-limiter": "6.2.*",
         "symfony/runtime": "6.2.*",
+        "symfony/twig-bundle": "6.2.*",
         "symfony/workflow": "6.2.*",
         "symfony/yaml": "6.2.*"
     },

@@ -7,15 +7,28 @@ namespace App\EventListener\Telegram\Message;
 use App\Contracts\HttpClient\Telegram\BotApi;
 use App\Event\Telegram\MessageEvent;
 use Core\Telegram\Message\Entity\Message;
+use JsonException;
+use Symfony\Contracts\HttpClient\Exception\ExceptionInterface;
+use Twig;
 
 final class HelpCommandMessageListener extends AbstractMessageListener
 {
     public function __construct(
-        private readonly BotApi $telegram
+        private readonly BotApi $telegram,
+        private readonly Twig\Environment $twig
     )
     {
     }
 
+    /**
+     * @param MessageEvent $event
+     *
+     * @return void
+     *
+     * @throws Twig\Error\Error
+     * @throws ExceptionInterface
+     * @throws JsonException
+     */
     public function onMessage(MessageEvent $event): void
     {
         $message = $event->getMessage();
@@ -28,9 +41,7 @@ final class HelpCommandMessageListener extends AbstractMessageListener
 
         $this->telegram->sendMessage(
             chatId: $message->chat->id,
-            text: new Message\Text(<<<HTML
-На данный момент бот поддерживает только текстовые сообщения. Фотографии, видео, гифки, стикеры и прочее - не обрабатываются. Просто отправь любой текст боту, и я увижу твой вопрос.
-HTML)
+            text: new Message\Text($this->twig->render('Telegram/Message/help.html.twig'))
         );
     }
 }

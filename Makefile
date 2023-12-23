@@ -27,7 +27,7 @@ up: ## Run all services
 down: ## Run all services
 	@$(DC_CMD) down --remove-orphans
 
-install-dependency: ## Install all dependencies
+install-dependency: ## Install Composer dependencies
 	@$(DC_CMD) exec $(PHP_CONTAINER) composer install --no-scripts --no-progress
 
 clear-cache: ## Clear Symfony cache
