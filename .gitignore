@@ -1,7 +1,5 @@
-/postgres/data/**
-!/postgres/data/.gitkeep
-/postgres/dump/**
-!/postgres/dump/.gitkeep
+/redis/
+/postgres/
 
 # PhpStorm / IDEA
 .idea/

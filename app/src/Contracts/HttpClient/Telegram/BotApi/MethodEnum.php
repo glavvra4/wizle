@@ -12,6 +12,8 @@ enum MethodEnum implements MethodEnumInterface
     case getWebhookInfo;
     case getMe;
 
+    case sendMessage;
+
     public function getName(): string
     {
         return $this->name;

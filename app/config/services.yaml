@@ -12,3 +12,66 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+
+    #==================================================================================================================#
+    # Telegram API Clients
+
+    App\Contracts\HttpClient\Telegram\BotApi:
+        class: App\Contracts\HttpClient\Telegram\BotApi
+        arguments:
+            $adminTelegramChatId: '%env(int:TELEGRAM_BOT_ADMIN_CHAT_ID)%'
+
+    #==================================================================================================================#
+    # Telegram Update Event Listeners
+
+    App\EventListener\Telegram\Update\MessageUpdateListener:
+        class: App\EventListener\Telegram\Update\MessageUpdateListener
+        tags:
+            - { name: kernel.event_listener, event: app.telegram.update, method: onUpdate }
+
+    App\EventListener\Telegram\Update\EditedMessageUpdateListener:
+        class: App\EventListener\Telegram\Update\EditedMessageUpdateListener
+        tags:
+            - { name: kernel.event_listener, event: app.telegram.update, method: onUpdate }
+
+    App\EventListener\Telegram\Update\ChannelPostUpdateListener:
+        class: App\EventListener\Telegram\Update\ChannelPostUpdateListener
+        tags:
+            - { name: kernel.event_listener, event: app.telegram.update, method: onUpdate }
+
+    App\EventListener\Telegram\Update\EditedChannelPostUpdateListener:
+        class: App\EventListener\Telegram\Update\EditedChannelPostUpdateListener
+        tags:
+            - { name: kernel.event_listener, event: app.telegram.update, method: onUpdate }
+
+    #==================================================================================================================#
+    # Telegram Message Event Listeners
+
+    App\EventListener\Telegram\Message\DefaultMessageListener:
+        class: App\EventListener\Telegram\Message\DefaultMessageListener
+        tags:
+            - { name: kernel.event_listener, event: app.telegram.message, method: onMessage, priority: -1 }
+
+    App\EventListener\Telegram\Message\TextMessageListener:
+        class: App\EventListener\Telegram\Message\TextMessageListener
+        arguments:
+            $anonymousMessagesLimiter: '@limiter.anonymous_messages'
+        tags:
+            - { name: kernel.event_listener, event: app.telegram.message, method: onMessage, priority: 0 }
+
+    App\EventListener\Telegram\Message\HelpCommandMessageListener:
+        class: App\EventListener\Telegram\Message\HelpCommandMessageListener
+        tags:
+            - { name: kernel.event_listener, event: app.telegram.message, method: onMessage, priority: 999 }
+
+    App\EventListener\Telegram\Message\MeCommandMessageListener:
+        class: App\EventListener\Telegram\Message\MeCommandMessageListener
+        tags:
+            - { name: kernel.event_listener, event: app.telegram.message, method: onMessage, priority: 999 }
+
+    App\EventListener\Telegram\Message\StartCommandMessageListener:
+        class: App\EventListener\Telegram\Message\StartCommandMessageListener
+        tags:
+            - { name: kernel.event_listener, event: app.telegram.message, method: onMessage, priority: 999 }
+
+    #==================================================================================================================#

@@ -9,7 +9,12 @@ use Symfony\Contracts\EventDispatcher\Event;
 
 class UpdateEvent extends Event
 {
-    public const NAME = 'telegram.update';
+    /**
+     * @Event("App\Event\Telegram\UpdateEvent")
+     *
+     * @var string
+     */
+    public const NAME = 'app.telegram.update';
 
     public function __construct(
         protected Update $update

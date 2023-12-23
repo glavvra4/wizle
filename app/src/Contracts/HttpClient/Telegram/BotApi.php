@@ -6,6 +6,10 @@ namespace App\Contracts\HttpClient\Telegram;
 
 use App\Contracts\HttpClient\Telegram\BotApi\MethodEnumInterface;
 use App\Contracts\HttpClient\Telegram\BotApi\MethodEnum;
+use Core\Telegram\Chat\Entity\Chat;
+use Core\Telegram\Chat\Entity\ForumTopic;
+use Core\Telegram\Message\Entity\Message;
+use Core\Telegram\Message\Proxy\Message\AssociativeArray as MessageAssociativeArrayProxy;
 use Core\Telegram\Update\Entity\Updates;
 use Core\Telegram\Update\Proxy\Updates\IndexedArray as UpdatesIndexedArrayProxy;
 use Core\Telegram\User\Proxy\User\AssociativeArray as UserAssociativeArrayProxy;
@@ -17,10 +21,14 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class BotApi
 {
+    private Chat\Id $adminTelegramChatId;
+
     public function __construct(
         private readonly HttpClientInterface $telegramHttpClient,
+        int $adminTelegramChatId
     )
     {
+        $this->adminTelegramChatId = new Chat\Id($adminTelegramChatId);
     }
 
     /**
@@ -83,6 +91,53 @@ class BotApi
     {
         return new UserAssociativeArrayProxy($this->request(
             method: MethodEnum::getMe
+        ));
+    }
+
+    /**
+     * @param Chat\Id $chatId
+     * @param Message\Text $text
+     * @param ForumTopic\Id|null $messageThreadId
+     *
+     * @return Message
+     *
+     * @throws HttpExceptionInterface
+     * @throws JsonException
+     */
+    public function sendMessage(
+        Chat\Id $chatId,
+        Message\Text $text,
+        ?ForumTopic\Id $messageThreadId = null,
+    ): Message
+    {
+        return new MessageAssociativeArrayProxy($this->request(
+            method: MethodEnum::sendMessage,
+            body: [
+                'chat_id' => $chatId->getValue(),
+                'text' => $text->getValue(),
+                'message_thread_id' => $messageThreadId?->getValue()
+            ]
+        ));
+    }
+
+    /**
+     * @param Message\Text $text
+     *
+     * @return Message
+     *
+     * @throws HttpExceptionInterface
+     * @throws JsonException
+     */
+    public function sendAdminMessage(
+        Message\Text $text,
+    ): Message
+    {
+        return new MessageAssociativeArrayProxy($this->request(
+            method: MethodEnum::sendMessage,
+            body: [
+                'chat_id' => $this->adminTelegramChatId->getValue(),
+                'text' => $text->getValue(),
+            ]
         ));
     }
 }
