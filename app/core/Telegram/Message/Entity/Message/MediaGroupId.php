@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Core\Telegram\Message\Entity\Message;
 
-use Core\Common\Entity\IntValueObject;
+use Core\Common\Entity\StringValueObject;
 
-class MediaGroupId extends IntValueObject
+class MediaGroupId extends StringValueObject
 {
 }
