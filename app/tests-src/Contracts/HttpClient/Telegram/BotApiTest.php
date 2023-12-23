@@ -27,7 +27,7 @@ class BotApiTest extends TestCase
             ]))
         ]);
 
-        $botApi = new BotApi($telegramHttpClient);
+        $botApi = new BotApi($telegramHttpClient, 10);
 
         self::assertEquals(
             ['test'],
@@ -53,7 +53,7 @@ class BotApiTest extends TestCase
             ]))
         ]);
 
-        $botApi = new BotApi($telegramHttpClient);
+        $botApi = new BotApi($telegramHttpClient, 11);
         $updates = $botApi->getUpdates();
 
         self::assertEquals(
@@ -80,7 +80,7 @@ class BotApiTest extends TestCase
             ]))
         ]);
 
-        $botApi = new BotApi($telegramHttpClient);
+        $botApi = new BotApi($telegramHttpClient, 11);
         $user = $botApi->getMe();
 
         self::assertEquals(
