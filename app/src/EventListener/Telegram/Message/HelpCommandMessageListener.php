@@ -28,7 +28,9 @@ final class HelpCommandMessageListener extends AbstractMessageListener
 
         $this->telegram->sendMessage(
             chatId: $message->chat->id,
-            text: new Message\Text('Ну тут не поможет даже бог...')
+            text: new Message\Text(<<<HTML
+На данный момент бот поддерживает только текстовые сообщения. Фотографии, видео, гифки, стикеры и прочее - не обрабатываются. Просто отправь любой текст боту, и я увижу твой вопрос.
+HTML)
         );
     }
 }
