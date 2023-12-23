@@ -27,7 +27,7 @@ services:
     App\Command\Telegram\GetUpdatesCommand:
         class: App\Command\Telegram\GetUpdatesCommand
         arguments:
-            $timeout: '%env(int:TELEGRAM_BOT_API_TIMEOUT_SECONDS)%'
+            $longPollingTimeout: '%env(int:TELEGRAM_BOT_API_TIMEOUT_SECONDS)%'
 
     #==================================================================================================================#
     # Telegram Update Event Listeners
