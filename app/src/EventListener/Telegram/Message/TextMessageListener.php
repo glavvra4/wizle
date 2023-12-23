@@ -55,12 +55,19 @@ HTML,
         );
 
         $this->telegram->sendAdminMessage(
-            text: new Message\Text(sprintf('Новое анонимное сообщение: %s', $message->text->getValue()))
+            text: new Message\Text(sprintf(<<<HTML
+Новый вопрос!
+%s
+HTML,
+                $message->text->getValue()))
         );
 
         $this->telegram->sendMessage(
             chatId: $message->chat->id,
-            text: new Message\Text(sprintf('Вопрос успешно направлен. Осталось вопросов: %d.', $limit->getRemainingTokens()))
+            text: new Message\Text(sprintf(<<<HTML
+Ваш вопрос успешно отправлен!
+Осталось вопросов: %d.
+HTML, $limit->getRemainingTokens()))
         );
     }
 }
