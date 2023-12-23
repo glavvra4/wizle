@@ -22,6 +22,14 @@ services:
             $adminTelegramChatId: '%env(int:TELEGRAM_BOT_ADMIN_CHAT_ID)%'
 
     #==================================================================================================================#
+    # Command
+
+    App\Command\Telegram\UpdatesHandleCommand:
+        class: App\Command\Telegram\UpdatesHandleCommand
+        arguments:
+            $timeout: '%env(int:TELEGRAM_BOT_API_TIMEOUT_SECONDS)%'
+
+    #==================================================================================================================#
     # Telegram Update Event Listeners
 
     App\EventListener\Telegram\Update\MessageUpdateListener:

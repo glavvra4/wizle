@@ -11,9 +11,6 @@ use JsonException;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
 use Symfony\Contracts\HttpClient\Exception\ExceptionInterface;
 use Twig;
-use Twig\Error\LoaderError;
-use Twig\Error\RuntimeError;
-use Twig\Error\SyntaxError;
 
 final class TextMessageListener extends AbstractMessageListener
 {

@@ -18,7 +18,8 @@ class GetUpdatesCommand extends Command
     public function __construct(
         private readonly EventDispatcherInterface $eventDispatcher,
         private readonly BotApi                   $telegram,
-        string                                    $name = 'telegram:handle-updates'
+        string                                    $name = 'telegram:handle-updates',
+        private readonly int                      $longPollingTimeout = 60,
     )
     {
         parent::__construct($name);
@@ -42,7 +43,7 @@ class GetUpdatesCommand extends Command
             try {
                 $updates = $this->telegram->getUpdates(
                     offset: $lastUpdateId + 1,
-                    timeout: 30
+                    timeout: $this->longPollingTimeout
                 );
 
                 foreach ($updates as $update) {
