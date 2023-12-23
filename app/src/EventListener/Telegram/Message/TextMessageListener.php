@@ -7,6 +7,7 @@ namespace App\EventListener\Telegram\Message;
 use App\Contracts\HttpClient\Telegram\BotApi;
 use App\Event\Telegram\MessageEvent;
 use Core\Telegram\Message\Entity\Message;
+use Masterminds\HTML5;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
 
 final class TextMessageListener extends AbstractMessageListener
@@ -33,7 +34,9 @@ final class TextMessageListener extends AbstractMessageListener
         if (!$limit->isAccepted()) {
             $this->telegram->sendMessage(
                 chatId: $message->chat->id,
-                text: new Message\Text('Достигнут лимит вопросов. Попробуйте позже.')
+                text: new Message\Text(<<<HTML
+Достигнут лимит вопросов на сегодня. Попробуйте позже.
+HTML)
             );
             return;
         }
@@ -68,7 +71,7 @@ HTML,
             text: new Message\Text(sprintf(<<<HTML
 Ваш вопрос успешно отправлен!
 
-Осталось вопросов: %d
+Осталось вопросов сегодня: %d
 HTML, $limit->getRemainingTokens()))
         );
     }

@@ -3,4 +3,4 @@ framework:
         anonymous_messages:
             policy: 'fixed_window'
             limit: 3
-            interval: '60 minutes'
+            interval: '1 day'
