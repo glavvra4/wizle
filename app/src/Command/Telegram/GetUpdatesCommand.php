@@ -45,7 +45,9 @@ class GetUpdatesCommand extends Command
                     timeout: 30
                 );
 
-                $io->text(sprintf('Handled %d updates', count($updates)));
+                if (0 !== count($updates)){
+                    $io->text(sprintf('Handled %d updates', count($updates)));
+                }
 
                 foreach ($updates as $update) {
                     $lastUpdateId = $update->id->getValue();
