@@ -45,13 +45,17 @@ class GetUpdatesCommand extends Command
                     timeout: 30
                 );
 
-                if (0 !== count($updates)){
-                    $io->text(sprintf('Handled %d updates', count($updates)));
-                }
-
                 foreach ($updates as $update) {
                     $lastUpdateId = $update->id->getValue();
                     $this->eventDispatcher->dispatch(new UpdateEvent($update), UpdateEvent::NAME);
+                }
+
+                if (0 !== count($updates)){
+                    $io->text(sprintf(
+                        '[%s] Number of Updates handled: %d',
+                        date('c', time()),
+                        count($updates)
+                    ));
                 }
             } catch (Throwable $e) {
                 $io->error($e->getMessage());
