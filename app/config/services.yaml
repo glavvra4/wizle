@@ -24,8 +24,8 @@ services:
     #==================================================================================================================#
     # Command
 
-    App\Command\Telegram\UpdatesHandleCommand:
-        class: App\Command\Telegram\UpdatesHandleCommand
+    App\Command\Telegram\GetUpdatesCommand:
+        class: App\Command\Telegram\GetUpdatesCommand
         arguments:
             $timeout: '%env(int:TELEGRAM_BOT_API_TIMEOUT_SECONDS)%'
 
